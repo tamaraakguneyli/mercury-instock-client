@@ -12,12 +12,13 @@ $header-background-color: #232940;
 $cta-button-color: $header-background-color;
 $page-background-color: #f7f8f9;
 $cta-background-color: $page-background-color;
+$hover-border: 1px solid $primary-interactive-color;
 
 /* Tertiary Colors */
-$in-stock-label: #158463;
-$out-stock-label: #c94515;
-$delete-color: $out-stock-label;
-$error-color: $out-stock-label;
+$in-stock-color: #158463;
+$out-stock-color: #c94515;
+$delete-color: $out-stock-color;
+$error-color: $delete-color;
 
 $border-radius: 20px;
 
