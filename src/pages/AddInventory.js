@@ -1,5 +1,5 @@
-import PageHeader from "../PageHeader/PageHeader";
-import InventoryForm from "../InventoryForm.js/InventoryForm";
+import PageHeader from "../components/PageHeader/PageHeader";
+import InventoryForm from "../components/InventoryForm/InventoryForm";
 
 function AddInventory() {
   return (

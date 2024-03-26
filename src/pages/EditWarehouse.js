@@ -1,5 +1,5 @@
-import PageHeader from "../PageHeader/PageHeader";
-import WarehouseForm from "../WarehouseForm/WarehouseForm";
+import PageHeader from "../components/PageHeader/PageHeader";
+import WarehouseForm from "../components/WarehouseForm/WarehouseForm";
 
 function EditWarehouse() {
   return (

@@ -1,5 +1,5 @@
 function PageHeader() {
-  return <div>MainHeader</div>;
+  return <div>PageHeader</div>;
 }
 
 export default PageHeader;
