@@ -5,7 +5,7 @@ function AddWarehouse() {
 	const headerConfig = {
 		backButton: {
 			show: true,
-			path: "../inventory",
+			path: "/warehouses",
 		},
 		searchBar: false,
 		actionButton: {
