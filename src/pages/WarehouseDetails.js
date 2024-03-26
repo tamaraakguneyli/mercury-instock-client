@@ -5,7 +5,7 @@ function WarehouseDetails() {
 	const headerConfig = {
 		backButton: {
 			show: true,
-			path: "../warehouses",
+			path: "/warehouses",
 		},
 		searchBar: false,
 		actionButton: {
