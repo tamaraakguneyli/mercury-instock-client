@@ -1,13 +1,13 @@
-import MainHeader from "../components/MainHeader/MainHeader";
+import MainHeader from "../components/PageHeader/PageHeader";
 import WarehouseList from "../components/WarehouseList/WarehouseList";
 
 function Warehouses() {
-  return (
-    <>
-      <MainHeader />
-      <WarehouseList />
-    </>
-  );
+	return (
+		<>
+			<MainHeader />
+			<WarehouseList />
+		</>
+	);
 }
 
 export default Warehouses;

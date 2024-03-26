@@ -2,11 +2,19 @@
 @use "../../styles/partials/mixins" as *;
 
 .label {
+	background-color: $header-background-color;
 	@include container;
-	@include tablet {
-		display: flex;
-		flex-direction: row;
-		justify-content: space-between;
+	padding-bottom: 0;
+	&__container {
+		@include container;
+
+		background-color: $primary-white-color;
+		border-radius: 4px;
+		@include tablet {
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+		}
 	}
 	&__wrapper {
 		display: flex;
