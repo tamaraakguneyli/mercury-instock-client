@@ -50,7 +50,6 @@
 	&__button {
 		@include primary-button;
 		text-transform: capitalize;
-		text-decoration: none;
 		@include tablet {
 			width: 12rem;
 		}
@@ -59,6 +58,7 @@
 		display: flex;
 		align-self: center;
 		margin-top: 0.5rem;
+		text-decoration: none;
 	}
 	&__back {
 		background-image: url("../../assets/icons/arrow_back-24px.svg");
@@ -67,5 +67,13 @@
 		height: 2rem;
 		border: none;
 		background-color: $primary-white-color;
+	}
+	&__edit {
+		@include primary-button;
+		background-image: url("../../assets/icons/edit-24px.svg");
+		background-position: 15% 50%;
+		background-repeat: no-repeat;
+		width: 5rem;
+		text-indent: 1rem;
 	}
 }

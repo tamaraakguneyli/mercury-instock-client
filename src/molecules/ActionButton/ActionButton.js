@@ -11,7 +11,7 @@ function ActionButton({ label, path, type }) {
 	const buttonTypes = {
 		back: "label__back",
 		add: "label__button",
-		edit: "label__button--edit",
+		edit: "label__edit",
 	};
 
 	return (
