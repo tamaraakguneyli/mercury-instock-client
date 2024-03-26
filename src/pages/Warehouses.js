@@ -2,12 +2,17 @@ import PageHeader from "../components/PageHeader/PageHeader";
 import WarehouseList from "../components/WarehouseList/WarehouseList";
 
 function Warehouses() {
-	return (
-		<>
-			<PageHeader />
-			<WarehouseList />
-		</>
-	);
+  return (
+    <>
+      <PageHeader
+        title="Warehouses"
+        ctaLabel="+ add new warehouse"
+        path="/warehouses/add"
+        type="add"
+      />
+      <WarehouseList />
+    </>
+  );
 }
 
 export default Warehouses;
