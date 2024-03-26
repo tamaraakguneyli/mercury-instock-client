@@ -23,16 +23,15 @@ function App() {
 					<Route path=":id">
 						<Route index element={<WarehouseDetails />} />
 						<Route path="edit" element={<EditWarehouse />} />
-						<Route path="inventory">
-							<Route index element={<Inventory />} />
-							<Route path="add" element={<AddInventory />} />
-							<Route path=":inventoryId">
-								<Route index element={<InventoryDetails />} />
-								<Route path="edit" element={<EditInventory />} />
-							</Route>
-						</Route>
 					</Route>
 				</Route>
+				<Route path="/inventory" element={<Inventory />} />
+				<Route path="/inventory/add" element={<AddInventory />} />
+				<Route path="/inventory/:inventoryId">
+					<Route index element={<InventoryDetails />} />
+					<Route path="edit" element={<EditInventory />} />
+				</Route>
+				<Route />
 			</Routes>
 			<Footer />
 		</BrowserRouter>
