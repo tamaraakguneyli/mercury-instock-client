@@ -1,10 +1,10 @@
+import PageHeader from "../components/PageHeader/PageHeader";
 import InventoryForm from "../components/InventoryForm/InventoryForm";
-import MainHeader from "../components/MainHeader/MainHeader";
 
 function EditInventory() {
   return (
     <>
-      <MainHeader />
+      <PageHeader />
       <InventoryForm />
     </>
   );

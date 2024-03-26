@@ -9,6 +9,7 @@ import InventoryDetails from "./pages/InventoryDetails";
 import EditInventory from "./pages/EditInventory";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
+import "./App.scss";
 
 function App() {
   return (

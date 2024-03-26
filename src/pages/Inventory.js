@@ -1,10 +1,10 @@
 import InventoryList from "../components/InventoryList/InventoryList";
-import MainHeader from "../components/MainHeader/MainHeader";
+import PageHeader from "../components/PageHeader/PageHeader";
 
 function Inventory() {
   return (
     <>
-      <MainHeader />
+      <PageHeader />
       <InventoryList />
     </>
   );
