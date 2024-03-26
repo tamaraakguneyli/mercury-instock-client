@@ -1,5 +1,5 @@
-import MainHeader from "../MainHeader/MainHeader";
-import InventoryForm from "../InventoryForm.js/InventoryForm";
+import InventoryForm from "../components/InventoryForm/InventoryForm";
+import MainHeader from "../components/MainHeader/MainHeader";
 
 function EditInventory() {
   return (
