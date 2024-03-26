@@ -128,6 +128,10 @@
   @include tablet {
     height: 3rem;
   }
+  @include desktop {
+    margin: 0 0 1rem 0;
+    @include lr-padding(2, 0);
+  }
 }
 @mixin warehouse-card {
   border-top: $divider-line;
