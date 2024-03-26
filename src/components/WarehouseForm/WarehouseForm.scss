@@ -1,0 +1,53 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.forms {
+  @include container;
+  box-shadow: 10px 5px 5px $secondary-unactive-button;
+  &__form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__header {
+    color: $primary-text-color;
+    margin-bottom: 2rem;
+    margin-top: 0;
+    padding-top: 2rem;
+    border-top: $divider-line;
+    @include text-style(1.5, 1.75, 600);
+  }
+
+  &__label {
+    @include text-style(1, 1.2, 600);
+    margin-bottom: 0.5rem;
+  }
+
+  &__input {
+    @include text-field;
+    margin-bottom: 1rem;
+  }
+
+  &__buttons {
+    @include flex-container(row, space-around, center);
+    width: 100%;
+    background-color: $page-background-color;
+  }
+
+  &__button {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+
+    &--cancel {
+      @include secondary-button;
+      width: 40%;
+      height: 2.5rem;
+    }
+
+    &--save {
+      @include primary-button;
+      width: 40%;
+      height: 2.5rem;
+    }
+  }
+}
