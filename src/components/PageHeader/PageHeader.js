@@ -20,32 +20,40 @@ import "./PageHeader.scss";
 */
 
 function PageHeader({ title, config }) {
-  return title && config ? (
-    <section className="label">
-      <div className="label__container">
-        {config.backButton.show && (
-          <ActionButton label="" path={config.backButton.path} type="back" />
-        )}
-        <h2 className="label__title">{title || "..."}</h2>
-        {config.searchBar || config.actionButton.show ? (
-          <div className="label__wrapper">
-            {config.searchBar && <SearchBar />}
-            {config.actionButton.show && (
-              <ActionButton
-                label={config.actionButton.label}
-                path={config.actionButton.path}
-                type={config.actionButton.type}
-              />
-            )}
-          </div>
-        ) : (
-          ""
-        )}
-      </div>
-    </section>
-  ) : (
-    "Please add a header configuration for proper rendering."
-  );
+	return title && config ? (
+		<section className="label">
+			<div className="label__background">
+				<div className="label__container">
+					<div className="label__left">
+						{config.backButton.show && (
+							<ActionButton
+								label=""
+								path={config.backButton.path}
+								type="back"
+							/>
+						)}
+						<h2 className="label__title">{title || "..."}</h2>
+					</div>
+					{config.searchBar || config.actionButton.show ? (
+						<div className="label__wrapper">
+							{config.searchBar && <SearchBar />}
+							{config.actionButton.show && (
+								<ActionButton
+									label={config.actionButton.label}
+									path={config.actionButton.path}
+									type={config.actionButton.type}
+								/>
+							)}
+						</div>
+					) : (
+						""
+					)}
+				</div>
+			</div>
+		</section>
+	) : (
+		"Please add a header configuration for proper rendering."
+	);
 }
 
 export default PageHeader;

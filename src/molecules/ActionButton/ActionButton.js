@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 /*
   Type can be:
@@ -8,21 +8,21 @@ import { NavLink } from "react-router-dom";
 */
 
 function ActionButton({ label, path, type }) {
-  const buttonTypes = {
-    back: "back__button",
-    add: "label__button",
-    edit: "label__button--edit",
-  };
+	const buttonTypes = {
+		back: "label__back",
+		add: "label__button",
+		edit: "label__button--edit",
+	};
 
-  return (
-    <>
-      <NavLink to={path || "/"}>
-        <button className={buttonTypes[type]}>
-          {type !== "back" ? label : ""}
-        </button>
-      </NavLink>
-    </>
-  );
+	return (
+		<>
+			<Link className="label__tag" to={path || "/"}>
+				<button className={buttonTypes[type]}>
+					{type !== "back" ? label : ""}
+				</button>
+			</Link>
+		</>
+	);
 }
 
 export default ActionButton;
