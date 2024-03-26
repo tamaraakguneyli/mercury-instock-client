@@ -1,0 +1,42 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.list {
+  margin-top: 1.5rem;
+  @include flex-container();
+  @include container();
+  @include warehouse-card();
+  padding-top: 0.2rem;
+  padding-bottom: 0.2rem;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+
+  &__title {
+    margin-top: 0.5rem;
+    margin-bottom: 0.2rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    color: $secondary-text-color;
+    @include text-style(0.688, 1, 400);
+  }
+
+  &__data {
+    margin: 0;
+    color: $primary-text-color;
+    @include text-style(0.813, 1.25, 400);
+  }
+
+  &__status {
+    text-transform: uppercase;
+    @include in-stock;
+    &--out {
+      @include out-stock;
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $primary-interactive-color;
+  }
+}
