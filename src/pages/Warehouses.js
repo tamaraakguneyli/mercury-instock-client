@@ -6,6 +6,7 @@ function Warehouses() {
     <>
       <PageHeader
         title="Warehouses"
+        showSearch={true}
         ctaLabel="+ add new warehouse"
         path="/warehouses/add"
         type="add"
