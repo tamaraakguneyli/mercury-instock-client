@@ -1,0 +1,27 @@
+/* primary Colors */
+$primary-text-color: #13182c;
+$primary-interactive-color: #2e66e5;
+$primary-white-color: #ffffff;
+
+/* Secondary Colors */
+$secondary-text-color: #5c667e;
+$divider-line: 1px solid #bdc5d5;
+
+/* Background Colors */
+$header-background-color: #232940;
+$cta-button-color: $header-background-color;
+$page-background-color: #f7f8f9;
+$cta-background-color: $page-background-color;
+$hover-border: 1px solid $primary-interactive-color;
+
+/* Tertiary Colors */
+$in-stock-color: #158463;
+$out-stock-color: #c94515;
+$delete-color: $out-stock-color;
+$error-color: $delete-color;
+
+$border-radius: 20px;
+
+/* responsiveness*/
+$tablet-breakpoint: 768px;
+$desktop-breakpoint: 1280px;
