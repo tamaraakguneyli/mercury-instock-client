@@ -1,147 +1,165 @@
 @use "variables" as *;
 
 @mixin tablet {
-	@media screen and (min-width: $tablet-breakpoint) {
-		@content;
-	}
+  @media screen and (min-width: $tablet-breakpoint) {
+    @content;
+  }
 }
 
 @mixin desktop {
-	@media screen and (min-width: $desktop-breakpoint) {
-		@content;
-	}
+  @media screen and (min-width: $desktop-breakpoint) {
+    @content;
+  }
 }
 
 @mixin text-style($size, $line-height, $weight) {
-	font-size: $size + rem;
-	line-height: $line-height + rem;
-	font-weight: $weight;
+  font-size: $size + rem;
+  line-height: $line-height + rem;
+  font-weight: $weight;
 }
 
 @mixin flex-container(
-	$direction: column,
-	$justify: space-between,
-	$align: center
+  $direction: column,
+  $justify: space-between,
+  $align: center
 ) {
-	display: flex;
-	flex-direction: $direction;
-	justify-content: $justify;
-	align-items: $align;
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
 }
 
 @mixin lr-padding($padding-left, $padding-right) {
-	padding-left: $padding-left + rem;
-	padding-right: $padding-right + rem;
+  padding-left: $padding-left + rem;
+  padding-right: $padding-right + rem;
 }
 
 @mixin tb-padding($padding-top, $padding-bottom) {
-	padding-top: $padding-top + rem;
-	padding-bottom: $padding-bottom + rem;
+  padding-top: $padding-top + rem;
+  padding-bottom: $padding-bottom + rem;
+}
+
+@mixin lr-margin($margin-left, $margin-right) {
+  margin-left: $margin-left + rem;
+  margin-right: $margin-right + rem;
+}
+
+@mixin tb-margin($margin-top, $margin-bottom) {
+  margin-top: $margin-top + rem;
+  margin-bottom: $margin-bottom + rem;
+}
+
+@mixin width-height($width, $height) {
+  width: $width;
+  height: $height;
 }
 
 @mixin container {
-	padding: 1rem 1rem;
+  padding: 1rem 1rem;
 
-	@include tablet {
-		padding: 0 2rem;
-	}
+  @include tablet {
+    padding: 0 2rem;
+  }
 
-	@include desktop {
-		padding: 0 8.5rem;
-		margin: 0 auto;
-		max-width: 1280px;
-	}
+  @include desktop {
+    padding: 0 8.5rem;
+    margin: 0 auto;
+    max-width: 1280px;
+  }
 }
 
 @mixin custom-button {
-	border: none;
-	border-radius: $border-radius;
-	font-size: 0.9rem;
-	width: 100%;
-	height: 2.25rem;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	@include lr-padding(1, 1);
-	cursor: pointer;
-	@include tablet {
-		height: 2.375rem;
-	}
+  border: none;
+  border-radius: $border-radius;
+  font-size: 0.9rem;
+  width: 100%;
+  height: 2.25rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @include lr-padding(1, 1);
+  cursor: pointer;
+  @include tablet {
+    height: 2.375rem;
+  }
 }
 
 @mixin primary-button {
-	@include custom-button;
-	background-color: $primary-interactive-color;
-	color: $primary-white-color;
+  @include custom-button;
+  background-color: $primary-interactive-color;
+  color: $primary-white-color;
 
-	&:hover {
-		background-color: $cta-button-color;
-	}
+  &:hover {
+    background-color: $cta-button-color;
+  }
 }
 
 @mixin secondary-button {
-	@include custom-button;
-	background-color: $primary-white-color;
-	color: $secondary-text-color;
-	border: $divider-line;
+  @include custom-button;
+  background-color: $primary-white-color;
+  color: $secondary-text-color;
+  border: $divider-line;
 
-	&:hover {
-		color: $primary-interactive-color;
-		border: $hover-border;
-	}
+  &:hover {
+    color: $primary-interactive-color;
+    border: $hover-border;
+  }
 }
 
 @mixin delete-button {
-	@include custom-button;
-	background-color: $delete-color;
-	color: $primary-white-color;
+  @include custom-button;
+  background-color: $delete-color;
+  color: $primary-white-color;
 
-	&:hover {
-		background-color: $cta-button-color;
-	}
+  &:hover {
+    background-color: $cta-button-color;
+  }
 }
 @mixin text-field {
-	border: $divider-line;
-	border-radius: $border-radius;
-	@include container;
-	::placeholder {
-		color: $cta-background-color;
-	}
-	&:hover {
-		border: $hover-border;
-	}
+  border: $divider-line;
+  border-radius: $border-radius;
+  @include container;
+  ::placeholder {
+    color: $cta-background-color;
+  }
+  &:hover {
+    border: $hover-border;
+  }
+  @include tablet {
+    height: 3rem;
+  }
 }
 @mixin warehouse-card {
-	border-top: $divider-line;
-	border-bottom: $divider-line;
-	@include tablet {
-		@include flex-container(row, space-between, center);
-		&:hover {
-			background-color: $cta-background-color;
-		}
-	}
+  border-top: $divider-line;
+  border-bottom: $divider-line;
+  @include tablet {
+    @include flex-container(row, space-between, center);
+    &:hover {
+      background-color: $cta-background-color;
+    }
+  }
 }
 @mixin tag {
-	height: 1.5rem;
-	border-radius: $border-radius;
-	@include lr-padding(0.5, 0.5);
-	@include tablet {
-		height: 1.625rem;
-	}
+  height: 1.5rem;
+  border-radius: $border-radius;
+  @include lr-padding(0.5, 0.5);
+  @include tablet {
+    height: 1.625rem;
+  }
 }
 @mixin out-stock {
-	@include tag;
-	background-color: rgba(201, 69, 21, 0.07);
-	color: $out-stock-color;
-	@include tablet {
-		width: 5rem;
-	}
+  @include tag;
+  background-color: rgba(201, 69, 21, 0.07);
+  color: $out-stock-color;
+  @include tablet {
+    width: 5rem;
+  }
 }
 @mixin in-stock {
-	@include tag;
-	background-color: rgba(21, 132, 99, 0.07);
-	color: $in-stock-color;
-	@include tablet {
-		width: 5rem;
-	}
+  @include tag;
+  background-color: rgba(21, 132, 99, 0.07);
+  color: $in-stock-color;
+  @include tablet {
+    width: 5rem;
+  }
 }
