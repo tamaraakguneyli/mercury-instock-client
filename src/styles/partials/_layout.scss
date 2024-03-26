@@ -16,6 +16,7 @@
       padding-bottom: 0;
       margin-top: 1.5rem;
     }
+
     &--middle-border {
       @include tablet {
         border-right: $divider-line;
@@ -24,9 +25,10 @@
   }
 
   &__headers {
+    @include text-style(1.5, 1.75, 600);
     color: $primary-text-color;
     margin-bottom: 2rem;
-    @include text-style(1.5, 1.75, 600);
+
     @include tablet {
       margin-top: 0;
     }
@@ -38,19 +40,19 @@
   }
 
   &__form-inputs {
-    @include text-field;
     margin-bottom: 1rem;
+    @include text-field;
   }
 }
 
 .buttons-block {
   @include flex-container(row, space-around, center);
-  width: 100%;
   background-color: $page-background-color;
+  width: 100%;
 
   @include tablet {
-    margin-top: 1.5rem;
     justify-content: flex-end;
+    margin-top: 1.5rem;
   }
 
   &__single-button {
@@ -70,8 +72,8 @@
       @include width-height(40%, 2.5rem);
 
       @include tablet {
-        width: 7%;
         @include lr-margin(1, 1);
+        width: 7%;
       }
     }
   }
