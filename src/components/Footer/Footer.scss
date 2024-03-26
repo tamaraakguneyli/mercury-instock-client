@@ -1,0 +1,12 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.footer {
+  @include flex-container();
+  @include text-style(0.688, 1, 400);
+  color: $secondary-text-color;
+
+  @include tablet {
+    @include text-style(0.75, 1.125, 400);
+  }
+}
