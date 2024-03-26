@@ -2,15 +2,22 @@ import PageHeader from "../components/PageHeader/PageHeader";
 import WarehouseList from "../components/WarehouseList/WarehouseList";
 
 function Warehouses() {
+  const headerConfig = {
+    backButton: {
+      show: false,
+    },
+    searchBar: true,
+    actionButton: {
+      label: "+ add to warehouse",
+      type: "add",
+      show: true,
+      path: "/warehouses/add",
+    },
+  };
+
   return (
     <>
-      <PageHeader
-        title="Warehouses"
-        showSearch={true}
-        ctaLabel="+ add new warehouse"
-        path="/warehouses/add"
-        type="add"
-      />
+      <PageHeader title="Warehouses" config={headerConfig} />
       <WarehouseList />
     </>
   );
