@@ -9,7 +9,6 @@
 		@include container;
 
 		background-color: $primary-white-color;
-		border-radius: 4px;
 		@include tablet {
 			display: flex;
 			flex-direction: row;
