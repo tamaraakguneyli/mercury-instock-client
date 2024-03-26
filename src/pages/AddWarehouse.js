@@ -2,9 +2,20 @@ import PageHeader from "../components/PageHeader/PageHeader";
 import WarehouseForm from "../components/WarehouseForm/WarehouseForm";
 
 function AddWarehouse() {
+	const headerConfig = {
+		backButton: {
+			show: true,
+			path: "../inventory",
+		},
+		searchBar: false,
+		actionButton: {
+			show: false,
+		},
+	};
+
 	return (
 		<>
-			<PageHeader />
+			<PageHeader title="add new warehouse" config={headerConfig} />
 			<WarehouseForm />
 		</>
 	);
