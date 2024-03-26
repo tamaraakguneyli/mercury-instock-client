@@ -4,13 +4,13 @@
 *,
 *::before,
 *::after {
-	box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body,
 ::placeholder {
-	padding: 0;
-	margin: 0;
-	font-family: "Titillium";
-	color: $primary-text-color;
+  padding: 0;
+  margin: 0;
+  font-family: "Titillium", "Georgia", "sans-serif";
+  color: $primary-text-color;
 }

@@ -1,10 +1,10 @@
 import WarehouseForm from "../WarehouseForm/WarehouseForm";
-import MainHeader from "../MainHeader/MainHeader";
+import PageHeader from "../PageHeader/PageHeader";
 
 function AddWarehouse() {
   return (
     <>
-      <MainHeader />
+      <PageHeader />
       <WarehouseForm />
     </>
   );

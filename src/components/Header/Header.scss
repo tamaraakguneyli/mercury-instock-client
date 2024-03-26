@@ -1,1 +1,48 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/resets" as *;
 
+.header {
+  background-color: $header-background-color;
+  padding: 1rem;
+
+  &__img {
+    width: 100%;
+    margin-bottom: 1rem;
+    @include flex-container(column, center, center);
+  }
+
+  &__nav {
+    @include flex-container(column, center, center);
+  }
+
+  &__logo {
+    width: 35%;
+    height: 35%;
+    margin-top: 1rem;
+  }
+
+  &__pages {
+    width: 100%;
+    margin-bottom: 1rem;
+    @include flex-container(row, space-evenly, center);
+  }
+
+  &__link {
+    text-decoration: none;
+    width: 50%;
+    color: $secondary-unactive-button;
+
+    &.active {
+      background-color: $primary-text-color;
+      border: 1px solid $primary-text-color;
+      border-radius: 30px;
+      color: $primary-white-color;
+    }
+  }
+
+  &__page {
+    margin: 0.5rem;
+    text-align: center;
+  }
+}

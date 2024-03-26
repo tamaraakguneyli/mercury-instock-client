@@ -1,10 +1,10 @@
-import MainHeader from "../MainHeader/MainHeader";
+import PageHeader from "../PageHeader/PageHeader";
 import InventoryForm from "../InventoryForm.js/InventoryForm";
 
 function AddInventory() {
   return (
     <>
-      <MainHeader />
+      <PageHeader />
       <InventoryForm />
     </>
   );

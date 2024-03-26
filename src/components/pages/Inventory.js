@@ -1,10 +1,10 @@
 import InventoryList from "../InventoryList/InventoryList";
-import MainHeader from "../MainHeader/MainHeader";
+import PageHeader from "../PageHeader/PageHeader";
 
 function Inventory() {
   return (
     <>
-      <MainHeader />
+      <PageHeader />
       <InventoryList />
     </>
   );

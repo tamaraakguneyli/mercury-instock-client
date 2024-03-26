@@ -1,10 +1,10 @@
-import MainHeader from "../MainHeader/MainHeader";
+import PageHeader from "../PageHeader/PageHeader";
 import WarehouseList from "../WarehouseList/WarehouseList";
 
 function Warehouses() {
   return (
     <>
-      <MainHeader />
+      <PageHeader />
       <WarehouseList />
     </>
   );

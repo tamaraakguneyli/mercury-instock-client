@@ -1,10 +1,10 @@
-import MainHeader from "../MainHeader/MainHeader";
+import PageHeader from "../PageHeader/PageHeader";
 import InventoryDetailsCard from "../InventoryDetailsCard/InventoryDetailsCard";
 
 function InventoryDetails() {
   return (
     <>
-      <MainHeader />
+      <PageHeader />
       <InventoryDetailsCard />
     </>
   );
