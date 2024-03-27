@@ -1,5 +1,5 @@
 import React from "react";
-import Select from "react-select";
+import SelectBox from "../../molecules/SelectBox/SelectBox";
 
 const options = [
   { value: "", label: "" },
@@ -29,7 +29,7 @@ function InventoryForm() {
                   placeholder="Please enter a brief item description..."
                 ></textarea>
                 <label className="layout__form-labels">Catorgory</label>
-                <Select options={options} className="layout__form-select" />
+                <SelectBox options={options} />
               </div>
             </div>
             <div className="page__top-divider">
@@ -64,7 +64,7 @@ function InventoryForm() {
                   placeholder="0"
                 />
                 <label className="layout__form-labels">Warehouse</label>
-                <Select options={options} />
+                <SelectBox options={options} />
               </div>
             </div>
           </div>
