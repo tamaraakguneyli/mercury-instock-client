@@ -11,19 +11,20 @@
   &__main {
     @include warehouse-card;
     padding: 1rem 1.5rem;
+    border-bottom: none;
     &--row {
       display: none;
     }
     @include tablet {
       display: none;
-      width: 100%;
-      padding: 0 2rem;
       &--row {
         display: flex;
         width: 100%;
         padding: 0 2rem;
+        border-top: none;
       }
     }
+
     &--first {
       border-top: none;
     }
@@ -54,11 +55,11 @@
 
   &__thread {
     display: flex;
-    height: 2.5rem;
     align-items: center;
     background-color: rgba($page-background-color, 0.7);
     padding: 0 2rem;
     display: none;
+    @include width-height(100%, 2.5rem);
     @include tablet {
       display: flex;
     }
@@ -153,29 +154,26 @@
   }
 
   &__buttons {
+    @include flex-container(row, space-between, normal);
     height: 1.5rem;
-    display: flex;
-    justify-content: space-between;
     margin: 0.5rem 0;
-
     &--row {
       display: none;
     }
     @include tablet {
       display: none;
       &--row {
-        display: flex;
-        justify-content: flex-start;
+        @include flex-container(row, space-between, normal);
         width: auto;
         margin: auto 0 auto auto;
       }
     }
   }
+
   &__delete {
+    @include width-height(1.5rem, 1.5rem);
     border: none;
     background-color: transparent;
-    width: 1.5rem;
-    height: 1.5rem;
     background-image: url("../../assets/icons/delete_outline-24px.svg");
     background-repeat: no-repeat;
     @include tablet {
@@ -186,9 +184,12 @@
   &__edit {
     border: none;
     background-color: transparent;
-    width: 1.5rem;
-    height: 1.5rem;
     background-image: url("../../assets/icons/edit-24px.svg");
     background-repeat: no-repeat;
+    @include width-height(1.5rem, 1.5rem);
   }
+}
+
+.page__content {
+  padding: 0;
 }
