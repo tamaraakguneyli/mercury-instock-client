@@ -19,7 +19,7 @@ function Inventory() {
   };
   return (
     <>
-      <PageHeader title="invenotry" config={headerConfig} />
+      <PageHeader title="Inventory" config={headerConfig} />
       <InventoryList />
     </>
   );
