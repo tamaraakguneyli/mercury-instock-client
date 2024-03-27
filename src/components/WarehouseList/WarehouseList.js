@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import "./WarehouseList.scss";
 
-export default function WarehouseList({ warehouses }) {
+function WarehouseList({ warehouses }) {
   const isLastComment = (index) => index === warehouses.length - 1;
   return (
     <div className="page page--margin">
@@ -91,3 +91,5 @@ export default function WarehouseList({ warehouses }) {
     </div>
   );
 }
+
+export default WarehouseList;
