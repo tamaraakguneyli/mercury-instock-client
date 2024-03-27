@@ -1,3 +1,12 @@
+import React from "react";
+import Select from "react-select";
+
+const options = [
+  { value: "", label: "" },
+  { value: "", label: "" },
+  { value: "", label: "" },
+];
+
 function InventoryForm() {
   return (
     <main className="page">
@@ -15,26 +24,20 @@ function InventoryForm() {
                   placeholder=""
                 />
                 <label className="layout__form-labels">Description</label>
-                <input
-                  type="text"
-                  id="address"
-                  className="layout__form-inputs"
+                <textarea
+                  className="layout__form-textarea"
                   placeholder="Please enter a brief item description..."
-                />
+                ></textarea>
                 <label className="layout__form-labels">Catorgory</label>
-                <select
-                  id="catorgory"
-                  className="layout__form-inputs"
-                  placeholder="Please select"
-                />
+                <Select options={options} />
               </div>
             </div>
             <div className="page__top-divider">
               <div className="layout__block">
                 <h1 className="layout__headers">Item Availability</h1>
                 <label className="layout__form-labels">Status</label>
-                <div>
-                  <div>
+                <div className="layout__form-radio-section">
+                  <div className="layout__form-radio-button">
                     <input
                       type="radio"
                       id="inStock"
@@ -43,7 +46,7 @@ function InventoryForm() {
                     />
                     <label for="inStock">In Stock</label>
                   </div>
-                  <div>
+                  <div className="layout__form-radio-button">
                     <input
                       type="radio"
                       id="outOfStock"
@@ -53,12 +56,15 @@ function InventoryForm() {
                     <label for="outOfStock">Out of Stock</label>
                   </div>
                 </div>
-                <label className="layout__form-labels">Warehouse</label>
-                <select
-                  id="warehouse"
-                  className="layout__form-inputs"
-                  placeholder="Please select"
+                <label className="layout__form-labels">Quantity</label>
+                <input
+                  type="text"
+                  id="quantity"
+                  className="layout__form-inputs layout__form-inputs--desktop"
+                  placeholder="0"
                 />
+                <label className="layout__form-labels">Warehouse</label>
+                <Select options={options} />
               </div>
             </div>
           </div>
