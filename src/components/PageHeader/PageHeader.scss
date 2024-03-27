@@ -2,63 +2,112 @@
 @use "../../styles/partials/mixins" as *;
 
 .label {
-	background-color: $header-background-color;
+	position: absolute;
+	top: 8rem;
+	width: 100%;
+	@include tablet {
+		top: 6rem;
+	}
+	@include desktop {
+		top: 7rem;
+	}
+
 	&__background {
 		@include container;
+		margin-top: 1rem;
+	}
+
+	&__mobile {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
 	}
 	&__left {
 		display: flex;
 		flex-direction: row;
 	}
+
+	&__title {
+		font-size: 1.5rem;
+		@include tb-padding(1, 1);
+		margin: 0;
+		text-transform: capitalize;
+		@include tablet {
+			font-size: 2.3rem;
+		}
+	}
 	&__container {
-		@include container;
+		@include lr-padding(1, 1);
 		border-top-right-radius: 4px;
 		border-top-left-radius: 4px;
-
 		background-color: $primary-white-color;
+
 		@include tablet {
+			@include lr-padding(2, 2);
 			display: flex;
 			flex-direction: row;
 			justify-content: space-between;
+			align-items: center;
+			height: 7rem;
 		}
 	}
 	&__wrapper {
+		position: relative;
 		display: flex;
 		flex-direction: column;
-		gap: 1rem;
+		gap: 0.5rem;
 		@include tablet {
 			display: flex;
 			flex-direction: row;
 			align-items: center;
+			gap: 1.3rem;
 		}
 	}
 	&__search {
-		@include text-field;
 		background-image: url("../../assets/icons/search-24px.svg");
 		background-repeat: no-repeat;
 		background-position: 95%;
 		background-size: 1.5rem;
 		text-indent: 1rem;
 		outline: 0;
+		height: 2.375rem;
+		border: $divider-line;
+		border-radius: $border-radius;
+		&::placeholder {
+			color: $secondary-text-color;
+		}
 
 		@include tablet {
-			width: 11.5rem;
-			height: 2.3rem;
+			width: 15rem;
 			padding: 0;
 		}
 	}
 	&__button {
 		@include primary-button;
 		text-transform: capitalize;
+
 		@include tablet {
-			width: 12rem;
+			height: 2.3rem;
+			width: 11rem;
 		}
 	}
 	&__tag {
 		display: flex;
 		align-self: center;
+		width: 100%;
 		margin-top: 0.5rem;
 		text-decoration: none;
+		@include tablet {
+			margin-top: 0;
+			width: 11rem;
+		}
+		&--back {
+			width: auto;
+			margin-top: 0.5rem;
+		}
+		&--edit {
+			width: auto;
+		}
 	}
 	&__back {
 		background-image: url("../../assets/icons/arrow_back-24px.svg");
@@ -70,10 +119,28 @@
 	}
 	&__edit {
 		@include primary-button;
+		border-radius: 50% 50%;
 		background-image: url("../../assets/icons/edit-24px.svg");
-		background-position: 15% 50%;
 		background-repeat: no-repeat;
-		width: 5rem;
-		text-indent: 1rem;
+		background-size: 1rem;
+		height: 2rem;
+		width: 2rem;
+		background-position: 50%;
+		@include tablet {
+			display: none;
+		}
+		&--tablet {
+			display: none;
+			@include tablet {
+				display: flex;
+				position: absolute;
+				right: 0;
+				top: -1rem;
+				width: 5rem;
+				border-radius: 20px;
+				background-position: 15% 50%;
+				text-indent: 1rem;
+			}
+		}
 	}
 }

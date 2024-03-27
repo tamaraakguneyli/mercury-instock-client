@@ -5,13 +5,17 @@ function InventoryDetails() {
 	const headerConfig = {
 		backButton: {
 			show: true,
-			path: "/inventory",
+			path: "/inventory/:id",
 		},
 		searchBar: false,
 		actionButton: {
 			show: true,
+			path: "/inventory/:id/edit",
 			label: "Edit",
-			type: "edit",
+			type: "editTablet",
+		},
+		editButton: {
+			show: true,
 			path: "/inventory/:id/edit",
 		},
 	};

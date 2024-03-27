@@ -11,6 +11,9 @@ function AddInventory() {
 		actionButton: {
 			show: false,
 		},
+		editButton: {
+			show: false,
+		},
 	};
 
 	return (

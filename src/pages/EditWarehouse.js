@@ -5,10 +5,13 @@ function EditWarehouse() {
 	const headerConfig = {
 		backButton: {
 			show: true,
-			path: "/warehouses",
+			path: "/warehouses/:id",
 		},
 		searchBar: false,
 		actionButton: {
+			show: false,
+		},
+		editButton: {
 			show: false,
 		},
 	};

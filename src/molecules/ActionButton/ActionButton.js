@@ -7,16 +7,17 @@ import { Link } from "react-router-dom";
   - edit => for editing an item
 */
 
-function ActionButton({ label, path, type }) {
+function ActionButton({ label, path, type, className }) {
 	const buttonTypes = {
 		back: "label__back",
 		add: "label__button",
 		edit: "label__edit",
+		editTablet: "label__edit label__edit--tablet",
 	};
 
 	return (
 		<>
-			<Link className="label__tag" to={path || "/"}>
+			<Link className={className} to={path || "/"}>
 				<button className={buttonTypes[type]}>
 					{type !== "back" ? label : ""}
 				</button>

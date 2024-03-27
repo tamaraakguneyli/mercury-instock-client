@@ -11,6 +11,9 @@ function AddWarehouse() {
 		actionButton: {
 			show: false,
 		},
+		editButton: {
+			show: false,
+		},
 	};
 
 	return (

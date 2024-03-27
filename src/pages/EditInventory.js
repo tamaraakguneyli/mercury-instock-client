@@ -11,10 +11,13 @@ function EditInventory() {
 		actionButton: {
 			show: false,
 		},
+		editButton: {
+			show: false,
+		},
 	};
 	return (
 		<>
-			<PageHeader title="Edit Inventory" config={headerConfig} />
+			<PageHeader title="Edit Inventory Item" config={headerConfig} />
 			<InventoryForm />
 		</>
 	);
