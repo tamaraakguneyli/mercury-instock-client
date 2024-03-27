@@ -9,10 +9,10 @@ import { Link } from "react-router-dom";
 
 function ActionButton({ label, path, type, className }) {
 	const buttonTypes = {
-		back: "label__back",
-		add: "label__button",
-		edit: "label__edit",
-		editTablet: "label__edit label__edit--tablet",
+		back: "page-header__back",
+		add: "page-header__button",
+		edit: "page-header__edit",
+		editTablet: "page-header__edit page-header__edit--tablet",
 	};
 
 	return (

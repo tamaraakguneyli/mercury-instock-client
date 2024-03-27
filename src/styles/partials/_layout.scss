@@ -1,0 +1,78 @@
+@use "../partials/mixins" as *;
+@use "../partials/variables" as *;
+
+.layout {
+	@include tablet {
+		@include flex-container(row, stretch, center);
+	}
+
+	&__block {
+		@include flex-container(column, baseline, normal);
+		padding: 1rem;
+
+		@include tablet {
+			padding-bottom: 0;
+			margin-top: 1.5rem;
+		}
+
+		&--middle-border {
+			@include tablet {
+				border-right: $divider-line;
+			}
+		}
+	}
+
+	&__headers {
+		@include text-style(1.5, 1.75, 600);
+		color: $primary-text-color;
+		margin-bottom: 2rem;
+
+		@include tablet {
+			margin-top: 0;
+		}
+	}
+
+	&__form-labels {
+		@include text-style(1, 1.2, 600);
+		margin-bottom: 0.5rem;
+	}
+
+	&__form-inputs {
+		margin-bottom: 1rem;
+		@include text-field;
+	}
+}
+
+.buttons-block {
+	@include flex-container(row, space-around, center);
+	background-color: $page-background-color;
+	width: 100%;
+
+	@include tablet {
+		justify-content: flex-end;
+		margin-top: 1.5rem;
+	}
+
+	&__single-button {
+		@include tb-margin(1.5, 1.5);
+
+		&--cancel {
+			@include secondary-button;
+			@include width-height(40%, 2.5rem);
+
+			@include tablet {
+				width: 8%;
+			}
+		}
+
+		&--save {
+			@include primary-button;
+			@include width-height(40%, 2.5rem);
+
+			@include tablet {
+				@include lr-margin(1, 1);
+				width: 7%;
+			}
+		}
+	}
+}

@@ -27,43 +27,43 @@ import "./PageHeader.scss";
 
 function PageHeader({ title, config }) {
 	return title && config ? (
-		<section className="label">
-			<div className="label__background">
-				<div className="label__container">
-					<div className="label__mobile">
-						<div className="label__left">
+		<section className="page-header">
+			<div className="page-header__background">
+				<div className="page-header__container">
+					<div className="page-header__mobile">
+						<div className="page-header__left">
 							{config.backButton.show && (
 								<ActionButton
 									label=""
 									path={config.backButton.path}
 									type="back"
-									className="label__tag label__tag--back"
+									className="page-header__tag page-header__tag--back"
 								/>
 							)}
 
-							<h2 className="label__title">{title || "..."}</h2>
+							<h2 className="page-header__title">{title || "..."}</h2>
 						</div>
-						<div className="label__right">
-							{config.editButton.show && (
+						{config.editButton.show && (
+							<div className="page-header__right">
 								<ActionButton
 									label=""
 									path={config.editButton.path}
 									type="edit"
-									className="label__tag label__tag--edit"
+									className="page-header__tag page-header__tag--edit"
 								/>
-							)}
-						</div>
+							</div>
+						)}
 					</div>
 
 					{config.searchBar || config.actionButton.show ? (
-						<div className="label__wrapper">
+						<div className="page-header__wrapper">
 							{config.searchBar && <SearchBar />}
 							{config.actionButton.show && (
 								<ActionButton
 									label={config.actionButton.label}
 									path={config.actionButton.path}
 									type={config.actionButton.type}
-									className="label__tag "
+									className="page-header__tag "
 								/>
 							)}
 						</div>

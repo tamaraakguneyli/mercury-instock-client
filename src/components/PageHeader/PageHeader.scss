@@ -1,7 +1,7 @@
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/mixins" as *;
 
-.label {
+.page-header {
 	position: absolute;
 	top: 8rem;
 	width: 100%;
@@ -15,6 +15,7 @@
 
 	&__background {
 		@include container;
+		padding-bottom: 0;
 		margin-top: 1rem;
 	}
 
@@ -29,7 +30,7 @@
 	}
 
 	&__title {
-		font-size: 1.5rem;
+		font-size: 1.7rem;
 		@include tb-padding(1, 1);
 		margin: 0;
 		text-transform: capitalize;
@@ -42,9 +43,8 @@
 		border-top-right-radius: 4px;
 		border-top-left-radius: 4px;
 		background-color: $primary-white-color;
+		padding-bottom: 1rem;
 		border-bottom: $divider-line;
-		padding-bottom: 2rem;
-
 		@include tablet {
 			@include lr-padding(2, 2);
 			display: flex;
