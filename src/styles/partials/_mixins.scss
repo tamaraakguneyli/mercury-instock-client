@@ -39,6 +39,21 @@
   padding-bottom: $padding-bottom + rem;
 }
 
+@mixin lr-margin($margin-left, $margin-right) {
+  margin-left: $margin-left + rem;
+  margin-right: $margin-right + rem;
+}
+
+@mixin tb-margin($margin-top, $margin-bottom) {
+  margin-top: $margin-top + rem;
+  margin-bottom: $margin-bottom + rem;
+}
+
+@mixin width-height($width, $height) {
+  width: $width;
+  height: $height;
+}
+
 @mixin container {
   padding: 1rem 1rem;
 
@@ -109,6 +124,13 @@
   }
   &:hover {
     border: $hover-border;
+  }
+  @include tablet {
+    height: 3rem;
+  }
+  @include desktop {
+    margin: 0 0 1rem 0;
+    @include lr-padding(2, 0);
   }
 }
 @mixin warehouse-card {
