@@ -29,7 +29,7 @@ function InventoryForm() {
                   placeholder="Please enter a brief item description..."
                 ></textarea>
                 <label className="layout__form-labels">Catorgory</label>
-                <Select options={options} />
+                <Select options={options} className="layout__form-select" />
               </div>
             </div>
             <div className="page__top-divider">
