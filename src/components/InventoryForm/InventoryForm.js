@@ -1,87 +1,110 @@
 import React from "react";
 import SelectBox from "../../molecules/SelectBox/SelectBox";
 
+/*
+  action: edit, add
+  apiData: expects the same properties as the MySQL attributes
+  ie: Item name is 'item_name' in the database 'inventories' table
+*/
+
 const options = [
   { value: "", label: "" },
   { value: "", label: "" },
   { value: "", label: "" },
 ];
 
-function InventoryForm() {
+function InventoryForm({ action, apiData }) {
   return (
     <main className="page">
       <article className="page__content">
-        <form>
-          <div className="layout">
-            <div className="page__top-divider">
-              <div className="layout__block layout__block--middle-border">
-                <h1 className="layout__headers">Item Details</h1>
-                <label className="layout__form-labels">Item Name</label>
-                <input
-                  type="text"
-                  id="warehouse-name"
-                  className="layout__form-inputs"
-                  placeholder=""
-                />
-                <label className="layout__form-labels">Description</label>
-                <textarea
-                  className="layout__form-textarea"
-                  placeholder="Please enter a brief item description..."
-                ></textarea>
-                <label className="layout__form-labels">Catorgory</label>
-                <SelectBox options={options} />
+        <form method="post" name={`inventory-${action}`}>
+          {!action ? (
+            <div className="layout">
+              <div className="page__top-divider">
+                <p>Provide a form action (edit or add)</p>
               </div>
             </div>
-            <div className="page__top-divider">
-              <div className="layout__block">
-                <h1 className="layout__headers">Item Availability</h1>
-                <label className="layout__form-labels">Status</label>
-                <div className="layout__form-radio-section">
-                  <div className="layout__form-radio-button">
+          ) : (
+            <>
+              <div className="layout">
+                <div className="page__top-divider">
+                  <div className="layout__block layout__block--middle-border">
+                    <h1 className="layout__headers">Item Details</h1>
+                    <label className="layout__form-labels">Item Name</label>
                     <input
-                      type="radio"
-                      id="inStock"
-                      name="status"
-                      value="inStock"
+                      type="text"
+                      id="warehouse-name"
+                      className="layout__form-inputs"
+                      value={apiData?.item_name || ""}
+                      placeholder="Item Name"
                     />
-                    <label for="inStock">In Stock</label>
-                  </div>
-                  <div className="layout__form-radio-button">
-                    <input
-                      type="radio"
-                      id="outOfStock"
-                      name="status"
-                      value="outOfStock"
-                    />
-                    <label for="outOfStock">Out of Stock</label>
+                    <label className="layout__form-labels">Description</label>
+                    <textarea
+                      className="layout__form-textarea"
+                      placeholder="Please enter a brief item description..."
+                      name="description"
+                    >
+                      {apiData?.description || ""}
+                    </textarea>
+                    <label className="layout__form-labels">Catergory</label>
+                    <SelectBox name="category" options={options} />
                   </div>
                 </div>
-                <label className="layout__form-labels">Quantity</label>
-                <input
-                  type="text"
-                  id="quantity"
-                  className="layout__form-inputs layout__form-inputs--desktop"
-                  placeholder="0"
-                />
-                <label className="layout__form-labels">Warehouse</label>
-                <SelectBox options={options} />
+                <div className="page__top-divider">
+                  <div className="layout__block">
+                    <h1 className="layout__headers">Item Availability</h1>
+                    <label className="layout__form-labels">Status</label>
+                    <div className="layout__form-radio-section">
+                      <div className="layout__form-radio-button">
+                        <input
+                          type="radio"
+                          id="instock"
+                          name="status"
+                          value="true"
+                          selected={apiData?.status === true || false}
+                        />
+                        <label for="instock">In Stock</label>
+                      </div>
+                      <div className="layout__form-radio-button">
+                        <input
+                          type="radio"
+                          id="oostock"
+                          name="status"
+                          value="false"
+                          selected={apiData?.status === false || false}
+                        />
+                        <label for="oostock">Out of Stock</label>
+                      </div>
+                    </div>
+                    <label className="layout__form-labels">Quantity</label>
+                    <input
+                      type="text"
+                      name="quantity"
+                      className="layout__form-inputs layout__form-inputs--desktop"
+                      value={apiData?.quantity || ""}
+                      placeholder="0"
+                    />
+                    <label className="layout__form-labels">Warehouse</label>
+                    <SelectBox name="warehouse_id" options={options} />
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-          <div className="buttons-block">
-            <button
-              type="submit"
-              className="buttons-block__single-button buttons-block__single-button--cancel"
-            >
-              Cancel
-            </button>
-            <button
-              type="submit"
-              className="buttons-block__single-button buttons-block__single-button--save"
-            >
-              +Add Item
-            </button>
-          </div>
+              <div className="buttons-block">
+                <button
+                  type="reset"
+                  className="buttons-block__single-button buttons-block__single-button--cancel"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  className="buttons-block__single-button buttons-block__single-button--save"
+                >
+                  {action === "edit" ? "Save" : "+ Add Item"}
+                </button>
+              </div>
+            </>
+          )}
         </form>
       </article>
     </main>
