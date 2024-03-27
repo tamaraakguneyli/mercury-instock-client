@@ -19,7 +19,7 @@ function AddWarehouse() {
   return (
     <>
       <PageHeader title="add new warehouse" config={headerConfig} />
-      <WarehouseForm />
+      <WarehouseForm action="add" />
     </>
   );
 }

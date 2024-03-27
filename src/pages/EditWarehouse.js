@@ -18,7 +18,7 @@ function EditWarehouse() {
   return (
     <>
       <PageHeader title="Edit Warehouse" config={headerConfig} />
-      <WarehouseForm />
+      <WarehouseForm action="edit" apiData={{}} />
     </>
   );
 }

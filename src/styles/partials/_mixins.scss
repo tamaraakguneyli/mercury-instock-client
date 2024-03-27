@@ -118,11 +118,14 @@
 @mixin text-field {
   border: $divider-line;
   border-radius: $border-radius;
+  outline: none;
   @include container;
-  ::placeholder {
-    color: $cta-background-color;
+  &::placeholder {
+    color: $secondary-text-color;
   }
-  &:hover {
+  &:hover,
+  &:focus,
+  &:focus-visible {
     border: $hover-border;
   }
   @include tablet {
