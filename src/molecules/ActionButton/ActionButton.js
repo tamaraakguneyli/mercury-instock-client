@@ -8,22 +8,22 @@ import { Link } from "react-router-dom";
 */
 
 function ActionButton({ label, path, type, className }) {
-	const buttonTypes = {
-		back: "page-header__back",
-		add: "page-header__button",
-		edit: "page-header__edit",
-		editTablet: "page-header__edit page-header__edit--tablet",
-	};
+  const buttonTypes = {
+    back: "page-header__back",
+    add: "page-header__button",
+    edit: "page-header__edit",
+    editTablet: "page-header__edit page-header__edit--tablet",
+  };
 
-	return (
-		<>
-			<Link className={className} to={path || "/"}>
-				<button className={buttonTypes[type]}>
-					{type !== "back" ? label : ""}
-				</button>
-			</Link>
-		</>
-	);
+  return (
+    <>
+      <Link className={className} to={path || "/"}>
+        <button className={buttonTypes[type]}>
+          {type !== "back" ? label : ""}
+        </button>
+      </Link>
+    </>
+  );
 }
 
 export default ActionButton;
