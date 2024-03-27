@@ -2,8 +2,6 @@
 @use "../partials/variables" as *;
 
 .layout {
-  padding-top: 2rem;
-
   @include tablet {
     @include flex-container(row, stretch, center);
   }
