@@ -3,7 +3,7 @@ import "./WarehouseList.scss";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-function WarehouseList() {
+export default function WarehouseList() {
   const apiUrl = "http://localhost:8080";
   const apiKey = "9b7d01e2-fbc7-4361-a460-11aa938e1c68";
 
@@ -12,19 +12,20 @@ function WarehouseList() {
   const getWarehouses = async () => {
     try {
       const { data } = await axios.get(
-        `${apiUrl}/warehouses/?api_key=${apiKey}`
+        "http://localhost:8080/warehouse?api_key=9b7d01e2-fbc7-4361-a460-11aa938e1c68"
       );
       setWarehouses(data);
     } catch (error) {
       console.log("error fetching warehouses", error);
     }
   };
+
   useEffect(() => {
     getWarehouses();
   }, []);
 
   if (!warehouses) {
-    <p>Loading...</p>;
+    return <p>Loading...</p>;
   }
 
   const isLastComment = (index) => index === warehouses.length - 1;
@@ -116,5 +117,3 @@ function WarehouseList() {
     </div>
   );
 }
-
-export default WarehouseList;

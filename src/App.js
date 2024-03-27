@@ -1,4 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Warehouses from "./pages/Warehouses";
 import AddWarehouse from "./pages/AddWarehouse";
 import WarehouseDetails from "./pages/WarehouseDetails";
