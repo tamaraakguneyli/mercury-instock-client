@@ -13,6 +13,7 @@
     @include tablet {
       padding-bottom: 0;
       margin-top: 1.5rem;
+      min-height: 30rem;
     }
 
     &--middle-border {
@@ -40,6 +41,36 @@
   &__form-inputs {
     margin-bottom: 1rem;
     @include text-field;
+
+    &--desktop {
+      @include desktop {
+        width: 9rem;
+      }
+    }
+  }
+
+  &__form-textarea {
+    @include text-field;
+    @include tb-padding(0.5, 1);
+    margin-bottom: 1rem;
+    height: 9rem;
+
+    @include tablet {
+      height: 9rem;
+      @include tb-padding(0.5, 1);
+    }
+  }
+  &__form-radio-section {
+    @include flex-container(row, flex-start, space-between);
+    margin-bottom: 1rem;
+  }
+  &__form-radio-button {
+    &:last-child {
+      margin-left: 3.5rem;
+    }
+  }
+  &__form-select {
+    border-radius: $border-radius;
   }
 }
 
@@ -71,7 +102,7 @@
 
       @include tablet {
         @include lr-margin(1, 1);
-        width: 7%;
+        width: auto;
       }
     }
   }
