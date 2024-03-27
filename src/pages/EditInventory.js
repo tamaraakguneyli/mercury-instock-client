@@ -18,7 +18,7 @@ function EditInventory() {
   return (
     <>
       <PageHeader title="Edit Inventory Item" config={headerConfig} />
-      <InventoryForm />
+      <InventoryForm action="edit" apiData={{}} />
     </>
   );
 }

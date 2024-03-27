@@ -19,7 +19,7 @@ function AddInventory() {
   return (
     <>
       <PageHeader title="add new inventory item" config={headerConfig} />
-      <InventoryForm />
+      <InventoryForm action="add" />
     </>
   );
 }
