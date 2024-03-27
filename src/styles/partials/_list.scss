@@ -14,9 +14,18 @@
     &--row {
       display: none;
     }
+    &--record {
+      display: none;
+    }
     @include tablet {
       display: none;
       &--row {
+        display: flex;
+        width: 100%;
+        padding: 0 2rem;
+        border-top: none;
+      }
+      &--record {
         display: flex;
         width: 100%;
         padding: 0 2rem;
@@ -92,6 +101,10 @@
         width: 16.67%;
         display: flex;
       }
+      &--header {
+        width: 25%;
+        display: flex;
+      }
       &--actions {
         width: auto;
         text-align: right;
@@ -109,6 +122,10 @@
       &--row {
         margin: 1rem 0;
         width: 16.67%;
+      }
+      &--record {
+        margin: 1rem 0;
+        width: 25%;
       }
     }
   }
@@ -162,6 +179,11 @@
     @include tablet {
       display: none;
       &--row {
+        @include flex-container(row, space-between, normal);
+        width: auto;
+        margin: auto 0 auto auto;
+      }
+      &--record {
         @include flex-container(row, space-between, normal);
         width: auto;
         margin: auto 0 auto auto;
