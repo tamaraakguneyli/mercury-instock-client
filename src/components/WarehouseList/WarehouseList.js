@@ -1,33 +1,7 @@
 import { Link } from "react-router-dom";
 import "./WarehouseList.scss";
-import axios from "axios";
-import { useEffect, useState } from "react";
 
-export default function WarehouseList() {
-  const apiUrl = "http://localhost:8080";
-  const apiKey = "9b7d01e2-fbc7-4361-a460-11aa938e1c68";
-
-  const [warehouses, setWarehouses] = useState(null);
-
-  const getWarehouses = async () => {
-    try {
-      const { data } = await axios.get(
-        "http://localhost:8080/warehouse?api_key=9b7d01e2-fbc7-4361-a460-11aa938e1c68"
-      );
-      setWarehouses(data);
-    } catch (error) {
-      console.log("error fetching warehouses", error);
-    }
-  };
-
-  useEffect(() => {
-    getWarehouses();
-  }, []);
-
-  if (!warehouses) {
-    return <p>Loading...</p>;
-  }
-
+export default function WarehouseList({ warehouses }) {
   const isLastComment = (index) => index === warehouses.length - 1;
   return (
     <div className="page page--margin">
