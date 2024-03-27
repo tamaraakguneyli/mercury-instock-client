@@ -3,16 +3,59 @@
 
 .list {
   margin-top: 1.5rem;
-  @include warehouse-card();
-  @include container();
+  @include container;
   padding: 0.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+
+  &__main {
+    @include warehouse-card;
+    margin-bottom: 1rem;
+    padding: 1rem 1.5rem;
+    &--row {
+      display: none;
+    }
+    @include tablet {
+      display: none;
+      width: 100%;
+      padding: 0 2rem;
+      &--row {
+        display: flex;
+        width: 100%;
+        padding: 0 2rem;
+      }
+    }
+  }
+
   &__details {
-    @include flex-container();
     display: flex;
     flex-direction: row;
     align-items: flex-start;
     justify-content: space-between;
-    margin-bottom: 1rem;
+    &--row {
+      display: none;
+    }
+
+    @include tablet {
+      display: none;
+      &--row {
+        display: flex;
+        width: 100%;
+        padding: 0 2rem;
+      }
+    }
+  }
+
+  &__thread {
+    display: flex;
+    height: 2.5rem;
+    align-items: center;
+    background-color: rgba($page-background-color, 0.7);
+    padding: 0 2rem;
+    display: none;
+    @include tablet {
+      display: flex;
+    }
   }
 
   &__first {
@@ -32,6 +75,22 @@
     text-transform: uppercase;
     color: $secondary-text-color;
     @include text-style(0.688, 1, 400);
+    &--top {
+      display: none;
+    }
+
+    @include tablet {
+      display: none;
+      &--top {
+        width: 16.67%;
+        display: flex;
+      }
+      &--actions {
+        width: auto;
+        text-align: right;
+        margin-left: auto;
+      }
+    }
   }
 
   &__data {
@@ -39,6 +98,12 @@
     margin-bottom: 0.7rem;
     color: $primary-text-color;
     @include text-style(0.813, 1.25, 400);
+    @include tablet {
+      &--row {
+        margin: 1rem 0;
+        width: 16.67%;
+      }
+    }
   }
 
   &__status {
@@ -48,9 +113,19 @@
     padding: 0.25rem 0.5rem;
     display: flex;
     align-items: center;
+    justify-content: center;
     font-weight: 600;
     &--out {
       @include out-stock;
+    }
+    @include tablet {
+      width: 4rem;
+    }
+
+    &--container {
+      @include tablet {
+        width: 16.67%;
+      }
     }
   }
 
@@ -69,6 +144,19 @@
     display: flex;
     justify-content: space-between;
     margin: 0.5rem 0;
+
+    &--row {
+      display: none;
+    }
+    @include tablet {
+      display: none;
+      &--row {
+        display: flex;
+        justify-content: flex-start;
+        width: auto;
+        margin: auto 0 auto auto;
+      }
+    }
   }
   &__delete {
     border: none;
@@ -77,6 +165,9 @@
     height: 1.5rem;
     background-image: url("../../assets/icons/delete_outline-24px.svg");
     background-repeat: no-repeat;
+    @include tablet {
+      margin-right: 1rem;
+    }
   }
 
   &__edit {
