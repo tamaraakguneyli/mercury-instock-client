@@ -2,12 +2,11 @@
 @use "../../styles/partials/variables" as *;
 
 .entity {
-  margin-top: 3rem;
-  padding: 0.5rem 1.5rem;
+  margin-top: 2rem;
+  padding: 1rem 1.5rem;
   @include tablet {
     margin-top: 0;
-    display: flex;
-    flex-direction: row;
+    @include flex-container(row, baseline, normal);
     @include tb-padding(1, 1);
     @include lr-padding(2, 2);
   }
@@ -24,8 +23,7 @@
       }
     }
     &:last-child {
-      display: flex;
-      flex-direction: row;
+      @include flex-container(row, baseline, normal);
       @include tablet {
         border-left: $divider-line;
         padding-left: 3rem;
@@ -46,8 +44,7 @@
   }
 
   &__title {
-    margin-top: 0.3rem;
-    margin-bottom: 0.2rem;
+    @include tb-margin(0.3, 0.2);
     font-weight: 400;
     text-transform: uppercase;
     color: $secondary-text-color;

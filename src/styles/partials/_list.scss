@@ -3,9 +3,8 @@
 
 .list {
   @include container;
+  @include flex-container(column, baseline, normal);
   padding: 0.5rem 1rem;
-  display: flex;
-  flex-direction: column;
 
   &__main {
     @include warehouse-card;
@@ -111,13 +110,12 @@
         text-align: right;
         margin-left: auto;
       }
-      &--action {
+      &--warehouse-action {
+        @include flex-container(row, flex-end, normal);
         width: 10%;
-        display: flex;
-        justify-content: flex-end;
       }
 
-      &--status {
+      &--warehouse-status {
         width: 30%;
         display: flex;
       }
@@ -166,7 +164,7 @@
         width: 5.5rem;
       }
     }
-    &--holder {
+    &--tag-block {
       width: 30%;
     }
   }

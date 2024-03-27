@@ -50,9 +50,9 @@ function WarehouseDetailsCard() {
         <div className="list__thread">
           <h4 className="list__title list__title--header">inventory item</h4>
           <h4 className="list__title list__title--header">category</h4>
-          <h4 className="list__title list__title--status">status</h4>
+          <h4 className="list__title list__title--warehouse-status">status</h4>
           <h4 className="list__title list__title--header">qty</h4>
-          <h4 className="list__title list__title--action">actions</h4>
+          <h4 className="list__title list__title--warehouse-action">actions</h4>
         </div>
         {dataSet.map((item, index) => (
           <div
@@ -71,7 +71,7 @@ function WarehouseDetailsCard() {
             <p className="list__data list__category list__data--record">
               {item.category}
             </p>
-            <div className="list__status--holder">
+            <div className="list__status--tag-block">
               <p
                 className={`list__data list__status ${
                   item.qty > 0 ? "" : "list__status--out"
