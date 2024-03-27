@@ -3,6 +3,7 @@
 @use "./styles/partials/mixins" as *;
 @use "./styles/partials/layout" as *;
 @use "./styles/partials/list" as *;
+@use "./styles/partials/entity-details" as *;
 
 .page {
   @include container;
