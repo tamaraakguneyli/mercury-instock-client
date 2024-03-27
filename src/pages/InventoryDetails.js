@@ -2,9 +2,26 @@ import InventoryDetailsCard from "../components/InventoryDetailsCard/InventoryDe
 import PageHeader from "../components/PageHeader/PageHeader";
 
 function InventoryDetails() {
+  const headerConfig = {
+    backButton: {
+      show: true,
+      path: "/inventory/:id",
+    },
+    searchBar: false,
+    actionButton: {
+      show: true,
+      path: "/inventory/:id/edit",
+      label: "Edit",
+      type: "editTablet",
+    },
+    editButton: {
+      show: true,
+      path: "/inventory/:id/edit",
+    },
+  };
   return (
     <>
-      <PageHeader />
+      <PageHeader title=".." config={headerConfig} />
       <InventoryDetailsCard />
     </>
   );

@@ -2,10 +2,16 @@
 @use "../../styles/partials/variables" as *;
 
 .header {
+  position: relative;
+  height: 14rem;
   background-color: $header-background-color;
+  @include tablet {
+    height: 12.5rem;
+  }
 
   &__wrapper {
     @include container;
+
     @include tablet {
       padding-top: 2.5rem;
       padding-bottom: 2.5rem;
@@ -29,8 +35,10 @@
   }
 
   &__logo {
-    width: 35%;
-    height: 35%;
+    width: 6rem;
+    @include tablet {
+      width: 8rem;
+    }
   }
 
   &__pages {
