@@ -5,6 +5,7 @@
 	position: absolute;
 	top: 8rem;
 	width: 100%;
+
 	@include tablet {
 		top: 6rem;
 	}
@@ -41,6 +42,8 @@
 		border-top-right-radius: 4px;
 		border-top-left-radius: 4px;
 		background-color: $primary-white-color;
+		border-bottom: $divider-line;
+		padding-bottom: 2rem;
 
 		@include tablet {
 			@include lr-padding(2, 2);
@@ -48,7 +51,7 @@
 			flex-direction: row;
 			justify-content: space-between;
 			align-items: center;
-			height: 7rem;
+			padding-bottom: 0;
 		}
 	}
 	&__wrapper {
