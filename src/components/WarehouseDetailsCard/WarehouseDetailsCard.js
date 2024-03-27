@@ -50,11 +50,9 @@ function WarehouseDetailsCard() {
         <div className="list__thread">
           <h4 className="list__title list__title--header">inventory item</h4>
           <h4 className="list__title list__title--header">category</h4>
-          <h4 className="list__title list__title--header">status</h4>
+          <h4 className="list__title list__title--status">status</h4>
           <h4 className="list__title list__title--header">qty</h4>
-          <h4 className="list__title list__title--header list__title--actions">
-            actions
-          </h4>
+          <h4 className="list__title list__title--action">actions</h4>
         </div>
         {dataSet.map((item, index) => (
           <div
@@ -73,7 +71,7 @@ function WarehouseDetailsCard() {
             <p className="list__data list__category list__data--record">
               {item.category}
             </p>
-            <div className="list__status-container">
+            <div className="list__status--holder">
               <p
                 className={`list__data list__status ${
                   item.qty > 0 ? "" : "list__status--out"
@@ -82,12 +80,7 @@ function WarehouseDetailsCard() {
                 {item.qty > 0 ? "in stock" : "out of stock"}
               </p>
             </div>
-            <p className="list__data list__qty list__data--record">
-              {item.qty}
-            </p>
-            {/* <p className="list__data list__warehouse list__data--row">
-              {item.warehouse}
-            </p> */}
+            <p className="list__data list__qty list__data--qty">{item.qty}</p>
             <div className="list__buttons list__buttons--record">
               <button className="list__delete"></button>
               <Link to={`/warehouses/${item.id}/edit`} className="list__edit">
@@ -122,8 +115,6 @@ function WarehouseDetailsCard() {
                 </p>
                 <h4 className="list__title">qty</h4>
                 <p className="list__data list__qty">{item.qty}</p>
-                {/* <h4 className="list__title">warehouse</h4>
-                <p className="list__data list__warehouse">{item.warehouse}</p> */}
               </div>
             </div>
             <div className="list__buttons">

@@ -102,13 +102,24 @@
         display: flex;
       }
       &--header {
-        width: 25%;
+        width: 20%;
         display: flex;
       }
+
       &--actions {
         width: auto;
         text-align: right;
         margin-left: auto;
+      }
+      &--action {
+        width: 10%;
+        display: flex;
+        justify-content: flex-end;
+      }
+
+      &--status {
+        width: 30%;
+        display: flex;
       }
     }
   }
@@ -125,7 +136,11 @@
       }
       &--record {
         margin: 1rem 0;
-        width: 25%;
+        width: 20%;
+      }
+      &--qty {
+        width: 20%;
+        display: flex;
       }
     }
   }
@@ -150,6 +165,9 @@
       @include tablet {
         width: 5.5rem;
       }
+    }
+    &--holder {
+      width: 30%;
     }
   }
 
