@@ -35,7 +35,7 @@ function InventoryForm({ action, apiData }) {
                       type="text"
                       name="item_name"
                       className="layout__form-inputs"
-                      value={apiData?.item_name || ""}
+                      defaultValue={apiData?.item_name || ""}
                       placeholder="Item Name"
                     />
                     <label className="layout__form-labels">Description</label>
@@ -60,7 +60,7 @@ function InventoryForm({ action, apiData }) {
                           type="radio"
                           id="instock"
                           name="status"
-                          value="true"
+                          defaultValue="true"
                           selected={apiData?.status === true || false}
                         />
                         <label for="instock">In Stock</label>
@@ -70,7 +70,7 @@ function InventoryForm({ action, apiData }) {
                           type="radio"
                           id="oostock"
                           name="status"
-                          value="false"
+                          defaultValue="false"
                           selected={apiData?.status === false || false}
                         />
                         <label for="oostock">Out of Stock</label>
@@ -81,7 +81,7 @@ function InventoryForm({ action, apiData }) {
                       type="text"
                       name="quantity"
                       className="layout__form-inputs layout__form-inputs--desktop"
-                      value={apiData?.quantity || ""}
+                      defaultValue={apiData?.quantity || ""}
                       placeholder="0"
                     />
                     <label className="layout__form-labels">Warehouse</label>
