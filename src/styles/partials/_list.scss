@@ -92,6 +92,9 @@
         width: 16.67%;
         display: flex;
       }
+      &--warehouse {
+        width: 20%;
+      }
       &--actions {
         width: auto;
         text-align: right;
@@ -105,10 +108,19 @@
     margin-bottom: 0.7rem;
     color: $primary-text-color;
     @include text-style(0.813, 1.25, 400);
+    &--address {
+      width: 7rem;
+    }
     @include tablet {
       &--row {
         margin: 1rem 0;
         width: 16.67%;
+      }
+      &--warehouse {
+        width: 20%;
+      }
+      &--contact {
+        width: 10rem;
       }
     }
   }
@@ -148,7 +160,7 @@
     color: $primary-interactive-color;
     background-image: url("../../assets/icons/chevron_right-24px.svg");
     background-repeat: no-repeat;
-    background-position: 3.4rem -0.1rem;
+    background-position: 3.5rem -0.1rem;
     font-weight: 600;
   }
 
