@@ -8,6 +8,7 @@ import apiConfig from "../apiConfig.json";
 function WarehouseDetails() {
   const { id: warehouseId } = useParams();
   const [warehouseContactDetails, setWarehouseContactDetails] = useState(null);
+  const [inventoryInWarehouse, setInventoryInWarehouse] = useState(null);
 
   useEffect(() => {
     const getWarehouseContactDetails = async () => {
@@ -20,12 +21,27 @@ function WarehouseDetails() {
         console.log("Error while fetching warehouse:", error);
       }
     };
+
+    const getInventoryInWarehouse = async () => {
+      try {
+        const { data } = await axios.get(
+          `${apiConfig.baseUrl}/warehouse/${warehouseId}/inventory${apiConfig.urlParam}`
+        );
+        setInventoryInWarehouse(data);
+      } catch (error) {
+        console.log("Error while fetching inventory:", error);
+      }
+    };
+
     getWarehouseContactDetails();
+    getInventoryInWarehouse();
   }, [warehouseId]);
 
   if (!warehouseContactDetails) {
     return <p>Loading...</p>;
   }
+
+  console.log(inventoryInWarehouse);
   const headerConfig = {
     backButton: {
       show: true,
@@ -46,7 +62,10 @@ function WarehouseDetails() {
   return (
     <>
       <PageHeader title=".." config={headerConfig} />
-      <WarehouseDetailsCard warehouse={warehouseContactDetails} />
+      <WarehouseDetailsCard
+        warehouse={warehouseContactDetails}
+        inventory={inventoryInWarehouse}
+      />
     </>
   );
 }
