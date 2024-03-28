@@ -1,5 +1,9 @@
 import React from "react";
 import "../WarehouseForm/WarehouseForm.scss";
+import { useParams } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import apiConfig from "../../apiConfig.json";
+import axios from "axios";
 
 /*
   action: edit, add
@@ -8,10 +12,34 @@ import "../WarehouseForm/WarehouseForm.scss";
 */
 
 function WarehouseForm({ action, apiData }) {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  const { id: warehouseId } = useParams();
+
+  const onSubmit = async (data) => {
+    if (action === "add") {
+      // TODO axios POST call
+    }
+
+    if (action === "edit") {
+      axios.put(
+        `${apiConfig.baseUrl}/warehouse/${warehouseId}${apiConfig.urlParam}`,
+        data
+      );
+    }
+  };
+
   return (
     <main className="page">
       <article className="page__content">
-        <form method="post" name={`warehouse-${action}`}>
+        <form
+          method="post"
+          name={`warehouse-${action}`}
+          onSubmit={handleSubmit(onSubmit)}
+        >
           {!action ? (
             <div className="layout">
               <div className="page__top-divider">
@@ -30,9 +58,21 @@ function WarehouseForm({ action, apiData }) {
                     <input
                       type="text"
                       name="warehouse_name"
-                      className="layout__form-inputs"
-                      value={apiData?.warehouse_name || ""}
-                      placeholder="Warehouse Name"
+                      className={
+                        errors.warehouse_name?.type === "required"
+                          ? "layout__form-inputs layout__form-inputs--error"
+                          : "layout__form-inputs"
+                      }
+                      defaultValue={apiData?.warehouse_name || ""}
+                      placeholder={
+                        errors.warehouse_name?.type === "required"
+                          ? "Please add warehouse name"
+                          : "Warehouse Name"
+                      }
+                      {...register("warehouse_name", {
+                        required: true,
+                      })}
+                      aria-invalid={errors.warehouse_name ? "true" : "false"}
                     />
                     <label className="layout__form-labels">
                       Street Address
@@ -40,25 +80,61 @@ function WarehouseForm({ action, apiData }) {
                     <input
                       type="text"
                       name="address"
-                      className="layout__form-inputs"
-                      value={apiData?.address || ""}
-                      placeholder="Street Address"
+                      className={
+                        errors.address?.type === "required"
+                          ? "layout__form-inputs layout__form-inputs--error"
+                          : "layout__form-inputs"
+                      }
+                      defaultValue={apiData?.address || ""}
+                      placeholder={
+                        errors.address?.type === "required"
+                          ? "Please add a street address"
+                          : "Street Address"
+                      }
+                      {...register("address", {
+                        required: true,
+                      })}
+                      aria-invalid={errors.address ? "true" : "false"}
                     />
                     <label className="layout__form-labels">City</label>
                     <input
                       type="text"
                       name="city"
-                      className="layout__form-inputs"
-                      value={apiData?.city || ""}
-                      placeholder="City"
+                      className={
+                        errors.city?.type === "required"
+                          ? "layout__form-inputs layout__form-inputs--error"
+                          : "layout__form-inputs"
+                      }
+                      defaultValue={apiData?.city || ""}
+                      placeholder={
+                        errors.city?.type === "required"
+                          ? "Please add a city"
+                          : "City"
+                      }
+                      {...register("city", {
+                        required: true,
+                      })}
+                      aria-invalid={errors.city ? "true" : "false"}
                     />
                     <label className="layout__form-labels">Country</label>
                     <input
                       type="text"
                       name="country"
-                      className="layout__form-inputs"
-                      value={apiData?.country || ""}
-                      placeholder="Country"
+                      className={
+                        errors.country?.type === "required"
+                          ? "layout__form-inputs layout__form-inputs--error"
+                          : "layout__form-inputs"
+                      }
+                      defaultValue={apiData?.country || ""}
+                      placeholder={
+                        errors.country?.type === "required"
+                          ? "Please add a country"
+                          : "Country"
+                      }
+                      {...register("country", {
+                        required: true,
+                      })}
+                      aria-invalid={errors.country ? "true" : "false"}
                     />
                   </div>
                 </div>
@@ -69,33 +145,79 @@ function WarehouseForm({ action, apiData }) {
                     <input
                       type="text"
                       name="contact_name"
-                      className="layout__form-inputs"
-                      value={apiData?.contact_name || ""}
-                      placeholder="Contact Name"
+                      className={
+                        errors.contact_name?.type === "required"
+                          ? "layout__form-inputs layout__form-inputs--error"
+                          : "layout__form-inputs"
+                      }
+                      defaultValue={apiData?.contact_name || ""}
+                      placeholder={
+                        errors.contact_name?.type === "required"
+                          ? "Please add a contact name"
+                          : "Contact Name"
+                      }
+                      {...register("contact_name", {
+                        required: true,
+                      })}
+                      aria-invalid={errors.contact_name ? "true" : "false"}
                     />
                     <label className="layout__form-labels">Position</label>
                     <input
                       type="text"
                       name="contact_position"
-                      className="layout__form-inputs"
-                      value={apiData?.contact_position || ""}
-                      placeholder="Position"
+                      className={
+                        errors.contact_position?.type === "required"
+                          ? "layout__form-inputs layout__form-inputs--error"
+                          : "layout__form-inputs"
+                      }
+                      defaultValue={apiData?.contact_position || ""}
+                      placeholder={
+                        errors.contact_position?.type === "required"
+                          ? "Please add a contact position"
+                          : "Contact Position"
+                      }
+                      {...register("contact_position", {
+                        required: true,
+                      })}
+                      aria-invalid={errors.contact_name ? "true" : "false"}
                     />
                     <label className="layout__form-labels">Phone Number</label>
                     <input
                       type="text"
                       name="contact_phone"
-                      className="layout__form-inputs"
-                      value={apiData?.contact_phone || ""}
-                      placeholder="Phone Number"
+                      className={
+                        errors.contact_phone?.type === "required"
+                          ? "layout__form-inputs layout__form-inputs--error"
+                          : "layout__form-inputs"
+                      }
+                      defaultValue={apiData?.contact_phone || ""}
+                      placeholder={
+                        errors.contact_phone?.type === "required"
+                          ? "Please add a contact phone number"
+                          : "Contact Phone"
+                      }
+                      {...register("contact_phone", {
+                        required: true,
+                      })}
                     />
                     <label className="layout__form-labels">Email</label>
                     <input
                       type="text"
                       name="contact_email"
-                      className="layout__form-inputs"
-                      value={apiData?.contact_email || ""}
-                      placeholder="Email"
+                      className={
+                        errors.contact_email?.type === "required"
+                          ? "layout__form-inputs layout__form-inputs--error"
+                          : "layout__form-inputs"
+                      }
+                      defaultValue={apiData?.contact_email || ""}
+                      placeholder={
+                        errors.contact_email?.type === "required"
+                          ? "Please add a contact email address"
+                          : "Contact Email"
+                      }
+                      {...register("contact_email", {
+                        required: true,
+                      })}
                     />
                   </div>
                 </div>

@@ -200,6 +200,12 @@
     height: 1.5rem;
     display: flex;
   }
+
+  &__empty {
+    @include flex-container(row, center, normal);
+    color: $out-stock-color;
+    text-transform: uppercase;
+  }
 }
 
 .page__content {
