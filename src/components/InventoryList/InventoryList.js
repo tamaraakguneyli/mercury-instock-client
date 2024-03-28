@@ -1,5 +1,4 @@
 import React from "react";
-import "./InventoryList.scss";
 import { Link } from "react-router-dom";
 
 function InventoryList() {
