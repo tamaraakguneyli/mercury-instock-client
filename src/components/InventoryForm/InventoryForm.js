@@ -1,5 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import SelectBox from "../../molecules/SelectBox/SelectBox";
+import { useForm } from "react-hook-form";
+import apiConfig from "../../apiConfig.json";
+import axios from "axios";
+import { useParams } from "react-router-dom";
 
 /*
   action: edit, add
@@ -7,17 +11,85 @@ import SelectBox from "../../molecules/SelectBox/SelectBox";
   ie: Item name is 'item_name' in the database 'inventories' table
 */
 
-const [warehouses, setWarehouses] = useState(null);
-const [catorgories, setCatorgories] = useState(null);
-
-[{ value: "warehouse_id", label: "warehouse_name" }];
-[{ value: "", label: "" }];
-
 function InventoryForm({ action, apiData }) {
+  const [warehouses, setWarehouses] = useState(null);
+  const [categories, setCategories] = useState(null);
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  const { id: inventoryId } = useParams();
+
+  const onSubmit = async (data) => {
+    if (action === "add") {
+      await axios.post(
+        `${apiConfig.baseUrl}/inventory${apiConfig.urlParam}`,
+        data
+      );
+    }
+
+    if (action === "edit") {
+      // TODO axios PUT call
+    }
+  };
+
+  useEffect(() => {
+    const getWarehouses = async () => {
+      try {
+        const { data } = await axios.get(
+          `${apiConfig.baseUrl}/warehouse${apiConfig.urlParam}`
+        );
+        setWarehouses(
+          data.map((warehouse) => {
+            return {
+              value: warehouse.id,
+              label: warehouse.warehouse_name,
+            };
+          })
+        );
+      } catch (error) {
+        console.log("Error while fetching warehouses", error);
+      }
+    };
+
+    const getCategories = async () => {
+      try {
+        const uniqueCategories = [];
+        const { data } = await axios.get(
+          `${apiConfig.baseUrl}/inventory${apiConfig.urlParam}`
+        );
+        data.forEach((entry) => {
+          const catObj = { value: entry.category, label: entry.category };
+          if (
+            !uniqueCategories.find((element) => element.value === catObj.value)
+          ) {
+            uniqueCategories.push(catObj);
+          }
+        });
+        setCategories(uniqueCategories);
+      } catch (error) {
+        console.log("Error while fetching categories", error);
+      }
+    };
+
+    getWarehouses();
+    getCategories();
+  }, []);
+
+  if (!warehouses || !categories) {
+    return <p>Loading...</p>;
+  }
+
   return (
     <main className="page">
       <article className="page__content">
-        <form method="post" name={`inventory-${action}`}>
+        <form
+          method="post"
+          name={`inventory-${action}`}
+          onSubmit={handleSubmit(onSubmit)}
+        >
           {!action ? (
             <div className="layout">
               <div className="page__top-divider">
@@ -34,22 +106,43 @@ function InventoryForm({ action, apiData }) {
                     <input
                       type="text"
                       name="item_name"
-                      className="layout__form-inputs"
+                      className={
+                        errors.item_name?.type === "required"
+                          ? "layout__form-inputs layout__form-inputs--error"
+                          : "layout__form-inputs"
+                      }
                       defaultValue={apiData?.item_name || ""}
-                      placeholder="Item Name"
+                      placeholder={
+                        errors.item_name?.type === "required"
+                          ? "Please add an item name"
+                          : "Item Name"
+                      }
+                      {...register("item_name", {
+                        required: true,
+                      })}
                     />
                     <label className="layout__form-labels">Description</label>
                     <textarea
-                      className="layout__form-textarea"
-                      placeholder="Please enter a brief item description..."
                       name="description"
-                    >
-                      {apiData?.description || ""}
-                    </textarea>
-                    <label className="layout__form-labels">Catergory</label>
+                      className={
+                        errors.description?.type === "required"
+                          ? "layout__form-inputs layout__form-inputs--error"
+                          : "layout__form-inputs"
+                      }
+                      defaultValue={apiData?.description || ""}
+                      placeholder={
+                        errors.description?.type === "required"
+                          ? "Please enter a brief item description..."
+                          : "Item Decscription"
+                      }
+                      {...register("description", {
+                        required: true,
+                      })}
+                    ></textarea>
+                    <label className="layout__form-labels">Category</label>
                     <SelectBox
                       name="category"
-                      options={catorgories}
+                      options={categories}
                       selectedOption={apiData?.category || ""}
                     />
                   </div>
@@ -66,8 +159,11 @@ function InventoryForm({ action, apiData }) {
                           name="status"
                           defaultValue="true"
                           selected={apiData?.status === true || false}
+                          {...register("status", {
+                            required: true,
+                          })}
                         />
-                        <label for="instock">In Stock</label>
+                        <label htmlFor="instock">In Stock</label>
                       </div>
                       <div className="layout__form-radio-button">
                         <input
@@ -76,17 +172,29 @@ function InventoryForm({ action, apiData }) {
                           name="status"
                           defaultValue="false"
                           selected={apiData?.status === false || false}
+                          {...register("status", {
+                            required: true,
+                          })}
                         />
-                        <label for="oostock">Out of Stock</label>
+                        <label htmlFor="oostock">Out of Stock</label>
                       </div>
                     </div>
                     <label className="layout__form-labels">Quantity</label>
                     <input
                       type="text"
                       name="quantity"
-                      className="layout__form-inputs layout__form-inputs--desktop"
+                      className={
+                        errors.quantity?.type === "required"
+                          ? "layout__form-inputs layout__form-inputs--error"
+                          : "layout__form-inputs"
+                      }
                       defaultValue={apiData?.quantity || ""}
-                      placeholder="0"
+                      placeholder={
+                        errors.quantity?.type === "required" ? "0" : "Quantity"
+                      }
+                      {...register("quantity", {
+                        required: true,
+                      })}
                     />
                     <label className="layout__form-labels">Warehouse</label>
                     <SelectBox

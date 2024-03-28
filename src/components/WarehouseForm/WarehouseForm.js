@@ -25,7 +25,7 @@ function WarehouseForm({ action, apiData }) {
     }
 
     if (action === "edit") {
-      axios.put(
+      await axios.put(
         `${apiConfig.baseUrl}/warehouse/${warehouseId}${apiConfig.urlParam}`,
         data
       );
