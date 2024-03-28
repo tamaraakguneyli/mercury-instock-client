@@ -2,6 +2,8 @@
 
 ### Basic set-up
 
+please Install npm install --save react-modal to install Delete Modal.
+
 Please use `apiConfig.json.sample` as reference for building up your `apiConfig.json` file locally. Make sure you provide the same `API_KEY` in your `.env` file as the one used for your Back End application:
 
 ```
