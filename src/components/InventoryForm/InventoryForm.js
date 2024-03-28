@@ -3,7 +3,7 @@ import SelectBox from "../../molecules/SelectBox/SelectBox";
 import { useForm } from "react-hook-form";
 import apiConfig from "../../apiConfig.json";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 /*
   action: edit, add
@@ -14,6 +14,7 @@ import { useParams } from "react-router-dom";
 function InventoryForm({ action, apiData }) {
   const [warehouses, setWarehouses] = useState(null);
   const [categories, setCategories] = useState(null);
+  const nav = useNavigate();
 
   const {
     register,
@@ -29,6 +30,7 @@ function InventoryForm({ action, apiData }) {
         data
       );
     }
+    nav("/inventory");
 
     if (action === "edit") {
       // TODO axios PUT call
