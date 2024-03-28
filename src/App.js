@@ -12,6 +12,7 @@ import Footer from "./components/Footer/Footer";
 import "./App.scss";
 
 function App() {
+  // All the app routes
   return (
     <BrowserRouter>
       <Header />
