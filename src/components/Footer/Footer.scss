@@ -5,8 +5,10 @@
   @include flex-container();
   @include text-style(0.688, 1, 500);
   color: $secondary-text-color;
-  margin: 2.5rem 0;
   @include tablet {
     @include text-style(0.75, 1.125, 500);
   }
+
+  flex-shrink: 0;
+  margin: 2rem 0;
 }
