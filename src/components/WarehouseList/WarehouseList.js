@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import "./WarehouseList.scss";
 
-function WarehouseList({ warehouses }) {
+function WarehouseList({ warehouses, handleOpenModal }) {
   const isLastComment = (index) => index === warehouses.length - 1;
   return (
     <div className="page page--margin">
@@ -49,7 +49,10 @@ function WarehouseList({ warehouses }) {
             </p>
 
             <div className="list__buttons list__buttons--row">
-              <button className="list__delete"></button>
+              <button
+                onClick={handleOpenModal}
+                className="list__delete"
+              ></button>
               <Link to={`/warehouses/${item.id}/edit`} className="list__edit">
                 <button></button>
               </Link>
@@ -80,7 +83,10 @@ function WarehouseList({ warehouses }) {
               </div>
             </div>
             <div className="list__buttons">
-              <button className="list__delete"></button>
+              <button
+                onClick={handleOpenModal}
+                className="list__delete"
+              ></button>
               <Link to={`/warehouses/${item.id}/edit`} className="list__edit">
                 <button></button>
               </Link>

@@ -3,9 +3,15 @@ import WarehouseList from "../components/WarehouseList/WarehouseList";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import apiConfig from "../apiConfig.json";
+import DeleteModal from "../components/DeleteModal/DeleteModal";
 
 function Warehouses() {
   const [warehouses, setWarehouses] = useState(null);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
+  const handleOpenModal = () => setModalIsOpen(true);
+
+  const handleCloseModal = () => setModalIsOpen(false);
 
   const getWarehouses = async () => {
     try {
@@ -46,7 +52,14 @@ function Warehouses() {
   return (
     <>
       <PageHeader title="Warehouses" config={headerConfig} />
-      <WarehouseList warehouses={warehouses} />
+      <DeleteModal
+        modalIsOpen={modalIsOpen}
+        handleCloseModal={handleCloseModal}
+      />
+      <WarehouseList
+        handleOpenModal={handleOpenModal}
+        warehouses={warehouses}
+      />
     </>
   );
 }
