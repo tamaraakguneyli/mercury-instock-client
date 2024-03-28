@@ -1,6 +1,6 @@
 import React from "react";
 import "../WarehouseForm/WarehouseForm.scss";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import apiConfig from "../../apiConfig.json";
 import axios from "axios";
@@ -12,6 +12,7 @@ import axios from "axios";
 */
 
 function WarehouseForm({ action, apiData }) {
+  const nav = useNavigate();
   const {
     register,
     handleSubmit,
@@ -25,11 +26,12 @@ function WarehouseForm({ action, apiData }) {
     }
 
     if (action === "edit") {
-      axios.put(
+      await axios.put(
         `${apiConfig.baseUrl}/warehouse/${warehouseId}${apiConfig.urlParam}`,
         data
       );
     }
+    nav("/warehouses");
   };
 
   return (

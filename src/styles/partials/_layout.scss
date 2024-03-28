@@ -47,6 +47,13 @@
         width: 9rem;
       }
     }
+    &--error {
+      border-color: $out-stock-color;
+      &:focus,
+      &:focus-visible {
+        border-color: $out-stock-color;
+      }
+    }
   }
 
   &__form-textarea {
