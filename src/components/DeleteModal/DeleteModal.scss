@@ -9,7 +9,6 @@
 
 .modal {
   position: absolute;
-  background-image: url("../../assets/icons/close-24px.svg");
   background-repeat: no-repeat;
   background-position: 98% 2%;
   background-color: white;
@@ -30,6 +29,14 @@
       left: 20%;
       height: 20rem;
     }
+  }
+  &__icon {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  &__close {
   }
   &__container {
     height: 100%;
