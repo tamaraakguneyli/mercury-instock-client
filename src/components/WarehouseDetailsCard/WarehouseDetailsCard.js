@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 
-function WarehouseDetailsCard() {
+function WarehouseDetailsCard({ warehouse }) {
+  console.log(warehouse);
   const dataSet = [
     {
       id: 1,
@@ -8,20 +9,6 @@ function WarehouseDetailsCard() {
       category: "Electronics",
       qty: 500,
       warehouse: "Washington",
-    },
-    {
-      id: 2,
-      name: "Gym Back",
-      category: "Gear",
-      qty: 0,
-      warehouse: "Manhattan",
-    },
-    {
-      id: 3,
-      name: "Hoodie",
-      category: "Apparel",
-      qty: 0,
-      warehouse: "Manhattan",
     },
   ];
 
@@ -32,18 +19,18 @@ function WarehouseDetailsCard() {
         <div className="entity">
           <div className="entity__block">
             <p className="entity__title">Warehouse Address:</p>
-            <p className="entity__data">33 Pearl Street SW, Washington, USA</p>
+            <p className="entity__data">{warehouse.address}</p>
           </div>
           <div className="entity__block">
             <div className="entity__details">
               <p className="entity__title">Contact Name:</p>
-              <p className="entity__data">Graeme Lyon</p>
-              <p className="entity__data">Warehouse Manager</p>
+              <p className="entity__data">{warehouse.contact_phone}</p>
+              <p className="entity__data">{warehouse.contact_position}</p>
             </div>
             <div className="entity__details">
               <p className="entity__title">Contact Information:</p>
-              <p className="entity__data">+1 (647) 504-0911</p>
-              <p className="entity__data">glyon@instock.com</p>
+              <p className="entity__data">{warehouse.contact_phone}</p>
+              <p className="entity__data">{warehouse.contact_email}</p>
             </div>
           </div>
         </div>
