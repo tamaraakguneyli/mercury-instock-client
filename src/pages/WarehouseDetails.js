@@ -1,7 +1,31 @@
 import PageHeader from "../components/PageHeader/PageHeader";
 import WarehouseDetailsCard from "../components/WarehouseDetailsCard/WarehouseDetailsCard";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import apiConfig from "../apiConfig.json";
 
 function WarehouseDetails() {
+  const { id: warehouseId } = useParams();
+  const [warehouseContactDetails, setWarehouseContactDetails] = useState(null);
+
+  useEffect(() => {
+    const getWarehouseContactDetails = async () => {
+      try {
+        const { data } = await axios.get(
+          `${apiConfig.baseUrl}/warehouse/${warehouseId}${apiConfig.urlParam}`
+        );
+        setWarehouseContactDetails(data);
+      } catch (error) {
+        console.log("Error while fetching warehouse:", error);
+      }
+    };
+    getWarehouseContactDetails();
+  }, [warehouseId]);
+
+  if (!warehouseContactDetails) {
+    return <p>Loading...</p>;
+  }
   const headerConfig = {
     backButton: {
       show: true,
@@ -22,7 +46,7 @@ function WarehouseDetails() {
   return (
     <>
       <PageHeader title=".." config={headerConfig} />
-      <WarehouseDetailsCard />
+      <WarehouseDetailsCard warehouse={warehouseContactDetails} />
     </>
   );
 }
