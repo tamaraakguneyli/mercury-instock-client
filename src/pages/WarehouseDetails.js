@@ -52,16 +52,19 @@ function WarehouseDetails() {
       show: true,
       type: "editTablet",
       label: "Edit",
-      path: "/warehouses/:id/edit",
+      path: `/warehouses/${warehouseId}/edit`,
     },
     editButton: {
       show: true,
-      path: "/warehouses/:id/edit",
+      path: `/warehouses/${warehouseId}/edit`,
     },
   };
   return (
     <>
-      <PageHeader title=".." config={headerConfig} />
+      <PageHeader
+        title={warehouseContactDetails.warehouse_name}
+        config={headerConfig}
+      />
       <WarehouseDetailsCard
         warehouse={warehouseContactDetails}
         inventory={inventoryInWarehouse}
