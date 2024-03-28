@@ -1,5 +1,5 @@
-@use "../../styles/partials/mixins" as *;
-@use "../../styles/partials/variables" as *;
+@use "./mixins" as *;
+@use "./variables" as *;
 
 .entity {
   margin-top: 2rem;

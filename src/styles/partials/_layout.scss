@@ -1,5 +1,5 @@
-@use "../partials/mixins" as *;
-@use "../partials/variables" as *;
+@use "./mixins" as *;
+@use "./variables" as *;
 
 .layout {
   @include tablet {
