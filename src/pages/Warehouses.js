@@ -9,7 +9,6 @@ function Warehouses() {
 
   const getWarehouses = async () => {
     try {
-      console.log(`${apiConfig.baseUrl}/warehouse${apiConfig.urlParam}`);
       const { data } = await axios.get(
         `${apiConfig.baseUrl}/warehouse${apiConfig.urlParam}`
       );
@@ -46,7 +45,7 @@ function Warehouses() {
   return (
     <>
       <PageHeader title="Warehouses" config={headerConfig} />
-      <WarehouseList warehouses={warehouses} />
+      <WarehouseList getWarehouses={getWarehouses} warehouses={warehouses} />
     </>
   );
 }
