@@ -132,6 +132,11 @@ function WarehouseDetailsCard({ warehouse, inventory }) {
             ))}
           </>
         )}
+        {!inventory && (
+          <div className="list__empty">
+            <p>There are no items in this warehouse</p>
+          </div>
+        )}
       </div>
     </div>
   );
