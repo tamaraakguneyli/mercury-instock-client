@@ -1,5 +1,10 @@
 import React from "react";
 import "../WarehouseForm/WarehouseForm.scss";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { useParams } from "react-router-dom";
+import apiConfig from "../../apiConfig.json";
+import axios from "axios";
 
 /*
   action: edit, add
@@ -8,10 +13,63 @@ import "../WarehouseForm/WarehouseForm.scss";
 */
 
 function WarehouseForm({ action, apiData }) {
+  const { id: warehouseId } = useParams();
+  const [editWarehouse, setEditWarehouse] = useState(false);
+  const [formData, setFormData] = useState({
+    warehouseName: "",
+    warehouseAddress: "",
+    city: "",
+    country: "",
+    contactName: "",
+    contactPosition: "",
+    contactPhone: "",
+    contactEmail: "",
+  });
+
+  const changeHandler = (event) => {
+    console.log(event);
+    setFormData({
+      ...formData,
+      [event.target.name]: event.target.value,
+    });
+  };
+
+  const nav = useNavigate();
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    const form = event.target;
+    console.log(form);
+
+    axios.put(
+      `${apiConfig.baseUrl}/warehouse/${warehouseId}${apiConfig.urlParam}`,
+      {
+        warehouseName: form.warehouse_name.value,
+        warehouseAddress: form.address.value,
+        city: form.city.value,
+        country: form.country.value,
+        contactName: form.contact_name.value,
+        contactPosition: form.contact_position.value,
+        contactPhone: form.contact_phone.value,
+        contactEmail: form.contact_email.value,
+      }
+    );
+
+    setEditWarehouse(true);
+    setTimeout(() => {
+      nav("/");
+    }, 1000);
+  };
+
   return (
     <main className="page">
       <article className="page__content">
-        <form method="post" name={`warehouse-${action}`}>
+        <form
+          method="post"
+          name={`warehouse-${action}`}
+          onSubmit={handleSubmit}
+        >
           {!action ? (
             <div className="layout">
               <div className="page__top-divider">
@@ -33,6 +91,7 @@ function WarehouseForm({ action, apiData }) {
                       className="layout__form-inputs"
                       value={apiData?.warehouse_name || ""}
                       placeholder="Warehouse Name"
+                      onChange={changeHandler}
                     />
                     <label className="layout__form-labels">
                       Street Address
@@ -43,6 +102,7 @@ function WarehouseForm({ action, apiData }) {
                       className="layout__form-inputs"
                       value={apiData?.address || ""}
                       placeholder="Street Address"
+                      onChange={changeHandler}
                     />
                     <label className="layout__form-labels">City</label>
                     <input
@@ -51,6 +111,7 @@ function WarehouseForm({ action, apiData }) {
                       className="layout__form-inputs"
                       value={apiData?.city || ""}
                       placeholder="City"
+                      onChange={changeHandler}
                     />
                     <label className="layout__form-labels">Country</label>
                     <input
@@ -59,6 +120,7 @@ function WarehouseForm({ action, apiData }) {
                       className="layout__form-inputs"
                       value={apiData?.country || ""}
                       placeholder="Country"
+                      onChange={changeHandler}
                     />
                   </div>
                 </div>
@@ -72,6 +134,7 @@ function WarehouseForm({ action, apiData }) {
                       className="layout__form-inputs"
                       value={apiData?.contact_name || ""}
                       placeholder="Contact Name"
+                      onChange={changeHandler}
                     />
                     <label className="layout__form-labels">Position</label>
                     <input
@@ -80,6 +143,7 @@ function WarehouseForm({ action, apiData }) {
                       className="layout__form-inputs"
                       value={apiData?.contact_position || ""}
                       placeholder="Position"
+                      onChange={changeHandler}
                     />
                     <label className="layout__form-labels">Phone Number</label>
                     <input
@@ -88,6 +152,7 @@ function WarehouseForm({ action, apiData }) {
                       className="layout__form-inputs"
                       value={apiData?.contact_phone || ""}
                       placeholder="Phone Number"
+                      onChange={changeHandler}
                     />
                     <label className="layout__form-labels">Email</label>
                     <input
@@ -96,6 +161,7 @@ function WarehouseForm({ action, apiData }) {
                       className="layout__form-inputs"
                       value={apiData?.contact_email || ""}
                       placeholder="Email"
+                      onChange={changeHandler}
                     />
                   </div>
                 </div>
