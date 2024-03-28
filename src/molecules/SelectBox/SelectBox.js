@@ -1,7 +1,7 @@
 import React from "react";
 import Select from "react-select";
 
-function SelectBox({ options, name }) {
+function SelectBox({ options, name, selectOption }) {
   return !name ? (
     <>
       <strong>SelectBox</strong>: Please provide a name prop for your select.
@@ -10,6 +10,7 @@ function SelectBox({ options, name }) {
     <>
       <Select
         name={name}
+        defaultValue={selectOption}
         styles={{
           control: (baseStyles, state) => ({
             ...baseStyles,

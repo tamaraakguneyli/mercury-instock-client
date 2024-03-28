@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import SelectBox from "../../molecules/SelectBox/SelectBox";
 
 /*
@@ -7,11 +7,11 @@ import SelectBox from "../../molecules/SelectBox/SelectBox";
   ie: Item name is 'item_name' in the database 'inventories' table
 */
 
-const options = [
-  { value: "", label: "" },
-  { value: "", label: "" },
-  { value: "", label: "" },
-];
+const [warehouses, setWarehouses] = useState(null);
+const [catorgories, setCatorgories] = useState(null);
+
+[{ value: "warehouse_id", label: "warehouse_name" }];
+[{ value: "", label: "" }];
 
 function InventoryForm({ action, apiData }) {
   return (
@@ -47,7 +47,11 @@ function InventoryForm({ action, apiData }) {
                       {apiData?.description || ""}
                     </textarea>
                     <label className="layout__form-labels">Catergory</label>
-                    <SelectBox name="category" options={options} />
+                    <SelectBox
+                      name="category"
+                      options={catorgories}
+                      selectedOption={apiData?.category || ""}
+                    />
                   </div>
                 </div>
                 <div className="page__top-divider">
@@ -85,7 +89,11 @@ function InventoryForm({ action, apiData }) {
                       placeholder="0"
                     />
                     <label className="layout__form-labels">Warehouse</label>
-                    <SelectBox name="warehouse_id" options={options} />
+                    <SelectBox
+                      name="warehouse_id"
+                      options={warehouses}
+                      selectedOption={apiData?.warehouse_id || ""}
+                    />
                   </div>
                 </div>
               </div>
