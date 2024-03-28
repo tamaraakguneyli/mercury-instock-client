@@ -33,7 +33,7 @@ function InventoryForm({ action, apiData }) {
                     <label className="layout__form-labels">Item Name</label>
                     <input
                       type="text"
-                      id="warehouse-name"
+                      name="item_name"
                       className="layout__form-inputs"
                       value={apiData?.item_name || ""}
                       placeholder="Item Name"

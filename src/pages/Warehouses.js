@@ -1,14 +1,32 @@
-import { useState } from "react";
 import PageHeader from "../components/PageHeader/PageHeader";
 import WarehouseList from "../components/WarehouseList/WarehouseList";
-import "./Warehouses.scss";
-import Modal from "react-modal";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import apiConfig from "../apiConfig.json";
 
 function Warehouses() {
-  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [warehouses, setWarehouses] = useState(null);
 
-  const handleOpenModal = () => setModalIsOpen(true);
-  const handleCloseModal = () => setModalIsOpen(false);
+  const getWarehouses = async () => {
+    try {
+      console.log(`${apiConfig.baseUrl}/warehouse${apiConfig.urlParam}`);
+      const { data } = await axios.get(
+        `${apiConfig.baseUrl}/warehouse${apiConfig.urlParam}`
+      );
+      setWarehouses(data);
+    } catch (error) {
+      console.log("Error while fetching warehouses:", error);
+    }
+  };
+
+  useEffect(() => {
+    getWarehouses();
+  }, []);
+
+  if (!warehouses) {
+    return <p>Loading...</p>;
+  }
+
   const headerConfig = {
     backButton: {
       show: false,
@@ -28,32 +46,7 @@ function Warehouses() {
   return (
     <>
       <PageHeader title="Warehouses" config={headerConfig} />
-      <WarehouseList />
-      <button className="trigger" onClick={handleOpenModal}>
-        Trigger Modal
-      </button>
-
-      <Modal
-        isOpen={modalIsOpen}
-        contentLabel="onRequestClose Example"
-        onRequestClose={handleCloseModal}
-        className="modal"
-        overlayClassName="Overlay"
-      >
-        <div className="modal__container">
-          <h3 className="modal__title">Delete Washington warehouse? </h3>
-          <p className="modal__text">
-            Please confirm that you’d like to delete the Washington from the
-            list of warehouses. You won’t be able to undo this action.
-          </p>
-          <div className="modal__wrap">
-            <button className="modal__cancel" onClick={handleCloseModal}>
-              cancel
-            </button>
-            <button className="modal__delete">delete</button>
-          </div>
-        </div>
-      </Modal>
+      <WarehouseList warehouses={warehouses} />
     </>
   );
 }

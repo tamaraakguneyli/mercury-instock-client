@@ -1,0 +1,59 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.entity {
+  margin-top: 2rem;
+  padding: 1rem 1.5rem;
+  @include tablet {
+    margin-top: 0;
+    @include flex-container(row, baseline, normal);
+    @include tb-padding(1, 1);
+    @include lr-padding(2, 2);
+  }
+
+  &__block {
+    &:first-child {
+      margin-bottom: 1rem;
+      @include tablet {
+        margin-right: 5rem;
+        width: 10rem;
+      }
+      @include desktop {
+        margin-right: 12rem;
+      }
+    }
+    &:last-child {
+      @include flex-container(row, baseline, normal);
+      @include tablet {
+        border-left: $divider-line;
+        padding-left: 3rem;
+      }
+    }
+  }
+
+  &__details {
+    &:first-child {
+      margin-right: 1.5rem;
+      @include tablet {
+        margin-right: 2.5rem;
+      }
+      @include desktop {
+        margin-right: 9rem;
+      }
+    }
+  }
+
+  &__title {
+    @include tb-margin(0.3, 0.2);
+    font-weight: 400;
+    text-transform: uppercase;
+    color: $secondary-text-color;
+    @include text-style(0.688, 1, 400);
+  }
+
+  &__data {
+    margin: 0;
+    color: $primary-text-color;
+    @include text-style(0.813, 1.25, 400);
+  }
+}
