@@ -3,9 +3,6 @@
 .button {
   @include delete-button;
 }
-.container {
-  @include in-stock;
-}
 
 .modal {
   position: absolute;
@@ -17,8 +14,7 @@
   padding-top: 5rem;
   @include lr-padding(2, 2);
   @include tablet {
-    @include tb-padding(1, 3);
-    @include lr-padding(4, 4);
+    padding-top: 1rem;
     top: 12%;
     left: 5%;
     max-width: 88%;
@@ -36,8 +32,7 @@
     justify-content: flex-end;
     align-items: center;
   }
-  &__close {
-  }
+
   &__container {
     height: 100%;
   }

@@ -3,7 +3,12 @@ import Modal from "react-modal";
 import "./DeleteModal.scss";
 import Delete from "../../assets/icons/close-24px.svg";
 
-export default function DeleteModal({ modalIsOpen, handleCloseModal }) {
+export default function DeleteModal({
+  modalIsOpen,
+  handleCloseModal,
+  handleDelete,
+  warehouseId,
+}) {
   return (
     <Modal
       isOpen={modalIsOpen}
@@ -12,10 +17,15 @@ export default function DeleteModal({ modalIsOpen, handleCloseModal }) {
       className="modal"
       overlayClassName="Overlay"
     >
+      <div className="modal__icon">
+        <img
+          onClick={handleCloseModal}
+          src={Delete}
+          alt=""
+          className="modal__close"
+        />
+      </div>
       <div className="modal__container">
-        <div className="modal__icon">
-          <img src={Delete} alt="" className="modal__close" />
-        </div>
         <h3 className="modal__title">Delete Washington warehouse? </h3>
         <p className="modal__text">
           Please confirm that you’d like to delete the Washington from the list
@@ -25,7 +35,12 @@ export default function DeleteModal({ modalIsOpen, handleCloseModal }) {
           <button className="modal__cancel" onClick={handleCloseModal}>
             cancel
           </button>
-          <button className="modal__delete">delete</button>
+          <button
+            onClick={() => handleDelete(warehouseId)}
+            className="modal__delete"
+          >
+            delete
+          </button>
         </div>
       </div>
     </Modal>
