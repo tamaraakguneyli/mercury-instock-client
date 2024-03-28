@@ -1,8 +1,7 @@
 import React from "react";
 import "../WarehouseForm/WarehouseForm.scss";
-import { useNavigate } from "react-router-dom";
-import { useState } from "react";
 import { useParams } from "react-router-dom";
+import { useForm } from "react-hook-form";
 import apiConfig from "../../apiConfig.json";
 import axios from "axios";
 
@@ -13,53 +12,24 @@ import axios from "axios";
 */
 
 function WarehouseForm({ action, apiData }) {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
   const { id: warehouseId } = useParams();
-  const [editWarehouse, setEditWarehouse] = useState(false);
-  const [formData, setFormData] = useState({
-    warehouseName: "",
-    warehouseAddress: "",
-    city: "",
-    country: "",
-    contactName: "",
-    contactPosition: "",
-    contactPhone: "",
-    contactEmail: "",
-  });
 
-  const changeHandler = (event) => {
-    console.log(event);
-    setFormData({
-      ...formData,
-      [event.target.name]: event.target.value,
-    });
-  };
+  const onSubmit = async (data) => {
+    if (action === "add") {
+      // TODO axios POST call
+    }
 
-  const nav = useNavigate();
-
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-
-    const form = event.target;
-    console.log(form);
-
-    axios.put(
-      `${apiConfig.baseUrl}/warehouse/${warehouseId}${apiConfig.urlParam}`,
-      {
-        warehouseName: form.warehouse_name.value,
-        warehouseAddress: form.address.value,
-        city: form.city.value,
-        country: form.country.value,
-        contactName: form.contact_name.value,
-        contactPosition: form.contact_position.value,
-        contactPhone: form.contact_phone.value,
-        contactEmail: form.contact_email.value,
-      }
-    );
-
-    setEditWarehouse(true);
-    setTimeout(() => {
-      nav("/");
-    }, 1000);
+    if (action === "edit") {
+      axios.put(
+        `${apiConfig.baseUrl}/warehouse/${warehouseId}${apiConfig.urlParam}`,
+        data
+      );
+    }
   };
 
   return (
@@ -68,7 +38,7 @@ function WarehouseForm({ action, apiData }) {
         <form
           method="post"
           name={`warehouse-${action}`}
-          onSubmit={handleSubmit}
+          onSubmit={handleSubmit(onSubmit)}
         >
           {!action ? (
             <div className="layout">
@@ -88,10 +58,21 @@ function WarehouseForm({ action, apiData }) {
                     <input
                       type="text"
                       name="warehouse_name"
-                      className="layout__form-inputs"
-                      value={apiData?.warehouse_name || ""}
-                      placeholder="Warehouse Name"
-                      onChange={changeHandler}
+                      className={
+                        errors.warehouse_name?.type === "required"
+                          ? "layout__form-inputs layout__form-inputs--error"
+                          : "layout__form-inputs"
+                      }
+                      defaultValue={apiData?.warehouse_name || ""}
+                      placeholder={
+                        errors.warehouse_name?.type === "required"
+                          ? "Please add warehouse name"
+                          : "Warehouse Name"
+                      }
+                      {...register("warehouse_name", {
+                        required: true,
+                      })}
+                      aria-invalid={errors.warehouse_name ? "true" : "false"}
                     />
                     <label className="layout__form-labels">
                       Street Address
@@ -100,27 +81,27 @@ function WarehouseForm({ action, apiData }) {
                       type="text"
                       name="address"
                       className="layout__form-inputs"
-                      value={apiData?.address || ""}
+                      defaultValue={apiData?.address || ""}
                       placeholder="Street Address"
-                      onChange={changeHandler}
+                      {...register("address")}
                     />
                     <label className="layout__form-labels">City</label>
                     <input
                       type="text"
                       name="city"
                       className="layout__form-inputs"
-                      value={apiData?.city || ""}
+                      defaultValue={apiData?.city || ""}
                       placeholder="City"
-                      onChange={changeHandler}
+                      {...register("city")}
                     />
                     <label className="layout__form-labels">Country</label>
                     <input
                       type="text"
                       name="country"
                       className="layout__form-inputs"
-                      value={apiData?.country || ""}
+                      defaultValue={apiData?.country || ""}
                       placeholder="Country"
-                      onChange={changeHandler}
+                      {...register("country")}
                     />
                   </div>
                 </div>
@@ -132,36 +113,36 @@ function WarehouseForm({ action, apiData }) {
                       type="text"
                       name="contact_name"
                       className="layout__form-inputs"
-                      value={apiData?.contact_name || ""}
+                      defaultValue={apiData?.contact_name || ""}
                       placeholder="Contact Name"
-                      onChange={changeHandler}
+                      {...register("contact_name")}
                     />
                     <label className="layout__form-labels">Position</label>
                     <input
                       type="text"
                       name="contact_position"
                       className="layout__form-inputs"
-                      value={apiData?.contact_position || ""}
+                      defaultValue={apiData?.contact_position || ""}
                       placeholder="Position"
-                      onChange={changeHandler}
+                      {...register("contact_position")}
                     />
                     <label className="layout__form-labels">Phone Number</label>
                     <input
                       type="text"
                       name="contact_phone"
                       className="layout__form-inputs"
-                      value={apiData?.contact_phone || ""}
+                      defaultValue={apiData?.contact_phone || ""}
                       placeholder="Phone Number"
-                      onChange={changeHandler}
+                      {...register("contact_phone")}
                     />
                     <label className="layout__form-labels">Email</label>
                     <input
                       type="text"
                       name="contact_email"
                       className="layout__form-inputs"
-                      value={apiData?.contact_email || ""}
+                      defaultValue={apiData?.contact_email || ""}
                       placeholder="Email"
-                      onChange={changeHandler}
+                      {...register("contact_email")}
                     />
                   </div>
                 </div>
