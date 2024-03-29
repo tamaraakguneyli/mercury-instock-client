@@ -59,7 +59,7 @@ export default function WarehouseCard({
           </div>
         </div>
         <div className="list__wrap list__wrap--buttons">
-          <button className="list__delete"></button>
+          <button onClick={handleOpenModal} className="list__delete"></button>
           <Link
             to={`/warehouses/${item.id}/edit`}
             className="list__edit"
@@ -68,7 +68,7 @@ export default function WarehouseCard({
       </div>
       <DeleteModal
         handleOpenModal={handleOpenModal}
-        handleDelete={{ handleDelete }}
+        handleDelete={handleDelete}
         modalIsOpen={modalIsOpen}
         handleCloseModal={handleCloseModal}
       />
