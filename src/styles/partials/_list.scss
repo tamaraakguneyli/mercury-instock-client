@@ -62,6 +62,7 @@
   &__first {
     display: flex;
     flex-direction: column;
+    width: 50%;
     @include tablet {
       flex-direction: row;
       width: 40%;
@@ -71,6 +72,7 @@
   &__second {
     display: flex;
     flex-direction: column;
+    width: 50%;
     @include tablet {
       flex-direction: row;
       width: 60%;
@@ -150,7 +152,6 @@
     margin: 0;
     color: $primary-text-color;
     @include text-style(0.813, 1.25, 400);
-
     &--address {
       width: 7rem;
     }
@@ -208,10 +209,9 @@
     padding-right: 1rem;
     text-decoration: none;
     color: $primary-interactive-color;
-    background-image: url("../../assets/icons/chevron_right-24px.svg");
-    background-repeat: no-repeat;
-    background-position: 3.5rem -0.1rem;
     font-weight: 600;
+    display: flex;
+    flex-direction: row;
     @include tablet {
       width: 50%;
     }
@@ -245,10 +245,18 @@
   }
 
   &__buttons {
+    @include flex-container(row, space-between, normal);
     @include tablet {
       @include flex-container(row, flex-end, normal);
       width: 16.67%;
     }
+  }
+
+  &__chevron {
+    @include width-height(1.5rem, 1.5rem);
+    background-image: url("../../assets/icons/chevron_right-24px.svg");
+    background-repeat: no-repeat;
+    background-position: 0 -0.1rem;
   }
 }
 
