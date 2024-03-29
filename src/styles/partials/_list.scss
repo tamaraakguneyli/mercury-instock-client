@@ -9,21 +9,25 @@
   &__main {
     @include warehouse-card;
     padding: 1rem 1.5rem;
-    border-bottom: none;
+    border-top: none;
 
     @include tablet {
       &--row {
         display: flex;
-        width: 100%;
         padding: 0 2rem;
-        border-top: none;
+        height: 3.75rem;
+        align-items: center;
       }
+
       &--record {
         display: flex;
         width: 100%;
         padding: 0 2rem;
-        border-top: none;
       }
+    }
+
+    &--last {
+      border-bottom: none;
     }
   }
 
@@ -33,15 +37,13 @@
     align-items: flex-start;
     justify-content: space-between;
     width: 100%;
-    @include tablet {
-      justify-content: flex-start;
-    }
 
     @include tablet {
+      justify-content: flex-start;
       &--row {
         display: flex;
-        width: 100%;
-        padding: 0 2rem;
+        width: 83.33%;
+        justify-content: flex-start;
       }
     }
   }
@@ -55,6 +57,23 @@
       padding: 0 2rem;
 
       @include width-height(100%, 2.5rem);
+    }
+  }
+  &__first {
+    display: flex;
+    flex-direction: column;
+    @include tablet {
+      flex-direction: row;
+      width: 40%;
+    }
+  }
+
+  &__second {
+    display: flex;
+    flex-direction: column;
+    @include tablet {
+      flex-direction: row;
+      width: 60%;
     }
   }
 
@@ -129,15 +148,30 @@
 
   &__data {
     margin: 0;
-    margin-bottom: 0.7rem;
     color: $primary-text-color;
     @include text-style(0.813, 1.25, 400);
 
     &--address {
       width: 7rem;
     }
+
+    @include tablet {
+      &--category {
+        width: 50%;
+      }
+
+      &--qty,
+      &--warehouse {
+        width: 33.33%;
+      }
+    }
   }
 
+  &__status-container {
+    @include tablet {
+      width: 33.33%;
+    }
+  }
   &__status {
     text-transform: uppercase;
     @include text-style(0.688, 1, 400);
@@ -166,7 +200,7 @@
 
   &__status-container {
     @include tablet {
-      width: 16.67%;
+      width: 33.33%;
     }
   }
 
@@ -178,6 +212,9 @@
     background-repeat: no-repeat;
     background-position: 3.5rem -0.1rem;
     font-weight: 600;
+    @include tablet {
+      width: 50%;
+    }
   }
 
   &__delete {
@@ -205,6 +242,13 @@
     @include flex-container(row, center, normal);
     color: $out-stock-color;
     text-transform: uppercase;
+  }
+
+  &__buttons {
+    @include tablet {
+      @include flex-container(row, flex-end, normal);
+      width: 16.67%;
+    }
   }
 }
 
