@@ -6,7 +6,6 @@ import variables from "./SelectBox.scss";
 
 function SelectBox({ options, name, selectedOption }) {
   const methods = useFormContext();
-
   return !name ? (
     <>
       <strong>SelectBox</strong>: Please provide a name prop for your select.
