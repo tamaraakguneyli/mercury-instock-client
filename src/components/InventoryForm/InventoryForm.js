@@ -85,6 +85,18 @@ function InventoryForm({ action, apiData }) {
     return <p>Loading...</p>;
   }
 
+  const selectedCategoryIndex = (categoryName) => {
+    return categories.findIndex((category) => {
+      return category.label === categoryName;
+    });
+  };
+
+  const selectedWarehouseIndex = (warehouseName) => {
+    return warehouses.findIndex((warehouse) => {
+      return warehouse.label === warehouseName;
+    });
+  };
+
   return (
     <main className="page">
       <article className="page__content">
@@ -151,7 +163,14 @@ function InventoryForm({ action, apiData }) {
                       <SelectBox
                         name="category"
                         options={categories}
-                        selectedOption={apiData?.category || ""}
+                        selectedOption={
+                          apiData?.category &&
+                          selectedCategoryIndex(apiData.category) !== -1
+                            ? categories[
+                                selectedCategoryIndex(apiData.category)
+                              ]
+                            : ""
+                        }
                         formMethods={methods}
                       />
                     </div>
@@ -211,7 +230,14 @@ function InventoryForm({ action, apiData }) {
                       <SelectBox
                         name="warehouse_id"
                         options={warehouses}
-                        selectedOption={apiData?.warehouse_id || ""}
+                        selectedOption={
+                          apiData?.warehouse_name &&
+                          selectedWarehouseIndex(apiData.warehouse_name) !== -1
+                            ? warehouses[
+                                selectedWarehouseIndex(apiData.warehouse_name)
+                              ]
+                            : ""
+                        }
                         formMethods={methods}
                       />
                     </div>

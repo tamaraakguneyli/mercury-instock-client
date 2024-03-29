@@ -51,7 +51,6 @@ function InventoryDetails() {
     },
   };
 
-  console.log(inventoryData);
   return (
     <>
       <PageHeader title={inventoryData.item_name} config={headerConfig} />
