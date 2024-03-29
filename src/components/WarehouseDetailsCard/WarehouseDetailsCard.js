@@ -1,17 +1,7 @@
 import { Link } from "react-router-dom";
 
 function WarehouseDetailsCard({ warehouse, inventory }) {
-  const dataSet = [
-    {
-      id: 1,
-      name: "Television",
-      category: "Electronics",
-      qty: 500,
-      warehouse: "Washington",
-    },
-  ];
-
-  const isLastComment = (index) => index === dataSet.length - 1;
+  const isLastComment = (index) => index === inventory.length - 1;
   return (
     <div className="page page--warehouse">
       <div className="list page__content">
@@ -52,9 +42,11 @@ function WarehouseDetailsCard({ warehouse, inventory }) {
         )}
         {inventory && (
           <>
-            {inventory.map((item) => (
+            {inventory.map((item, index) => (
               <div
-                className="list__main list__main--warehouse-detials"
+                className={`list__main ${
+                  isLastComment(index) ? "list__main--last" : ""
+                }`}
                 key={item.id}
               >
                 <div className="list__details">
