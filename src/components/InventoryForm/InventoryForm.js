@@ -21,7 +21,6 @@ function InventoryForm({ action, apiData }) {
 
   const onSubmit = async (data) => {
     if (action === "add") {
-      console.log(data);
       await axios.post(
         `${apiConfig.baseUrl}/inventory${apiConfig.urlParam}`,
         data

@@ -1,4 +1,4 @@
-import React from "react";
+import { useState, React } from "react";
 import Select from "react-select";
 import { useFormContext, Controller } from "react-hook-form";
 import "./SelectBox.scss";
@@ -6,6 +6,13 @@ import variables from "./SelectBox.scss";
 
 function SelectBox({ options, name, selectedOption }) {
   const methods = useFormContext();
+  const [currentSelectedOption, setCurrentSelectedOption] =
+    useState(selectedOption);
+
+  const handleChange = (selected) => {
+    setCurrentSelectedOption(selected);
+  };
+
   return !name ? (
     <>
       <strong>SelectBox</strong>: Please provide a name prop for your select.
@@ -34,10 +41,13 @@ function SelectBox({ options, name, selectedOption }) {
             }}
             options={options}
             value={
-              selectedOption ||
-              options.find((changeValue) => changeValue.value === value)
+              currentSelectedOption ||
+              options.find((option) => option.value === currentSelectedOption)
             }
-            onChange={(val) => onChange(val.value)}
+            onChange={(val) => {
+              handleChange(val);
+              onChange(val.value);
+            }}
           />
         )}
         rules={{ required: true }}
