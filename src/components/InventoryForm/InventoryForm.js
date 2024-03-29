@@ -3,7 +3,7 @@ import SelectBox from "../../molecules/SelectBox/SelectBox";
 import { useForm } from "react-hook-form";
 import apiConfig from "../../apiConfig.json";
 import axios from "axios";
-import { useParams, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 /*
   action: edit, add
@@ -21,7 +21,6 @@ function InventoryForm({ action, apiData }) {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const { id: inventoryId } = useParams();
 
   const onSubmit = async (data) => {
     if (action === "add") {
@@ -33,8 +32,12 @@ function InventoryForm({ action, apiData }) {
     nav("/inventory");
 
     if (action === "edit") {
-      // TODO axios PUT call
+      await axios.put(
+        `${apiConfig.baseUrl}/warehouse/${apiData.id}${apiConfig.urlParam}`,
+        data
+      );
     }
+    nav("/inventory");
   };
 
   useEffect(() => {
