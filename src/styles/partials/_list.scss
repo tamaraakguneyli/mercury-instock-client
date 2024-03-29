@@ -206,15 +206,13 @@
   }
 
   &__link {
-    padding-right: 1rem;
     text-decoration: none;
     color: $primary-interactive-color;
     font-weight: 600;
     display: flex;
     flex-direction: row;
-    @include tablet {
-      width: 50%;
-    }
+    width: auto;
+    margin-right: auto;
   }
 
   &__delete {
