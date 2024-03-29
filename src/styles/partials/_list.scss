@@ -9,21 +9,15 @@
   &__main {
     @include warehouse-card;
     padding: 1rem 1.5rem;
-    border-top: none;
+    border-bottom: none;
 
     @include tablet {
-      &--row {
-        display: flex;
-        padding: 0 2rem;
-        height: 3.75rem;
-        align-items: center;
-      }
-
-      &--record {
-        display: flex;
-        width: 100%;
-        padding: 0 2rem;
-      }
+      border-top: none;
+      display: flex;
+      padding: 0 2rem;
+      height: 3.75rem;
+      align-items: center;
+      border-bottom: $divider-line;
     }
 
     &--last {
@@ -43,7 +37,11 @@
       &--row {
         display: flex;
         width: 83.33%;
-        justify-content: flex-start;
+      }
+
+      &--record {
+        display: flex;
+        width: 80%;
       }
     }
   }
@@ -55,7 +53,6 @@
       align-items: center;
       background-color: rgba($page-background-color, 0.7);
       padding: 0 2rem;
-
       @include width-height(100%, 2.5rem);
     }
   }
@@ -66,6 +63,9 @@
     @include tablet {
       flex-direction: row;
       width: 40%;
+      &--warehouse-details {
+        width: 44.45%;
+      }
     }
   }
 
@@ -76,6 +76,9 @@
     @include tablet {
       flex-direction: row;
       width: 60%;
+      &--warehouse-details {
+        width: 55.55%;
+      }
     }
   }
 
@@ -149,7 +152,7 @@
   }
 
   &__data {
-    margin: 0;
+    margin: 0 0 0.4rem;
     color: $primary-text-color;
     @include text-style(0.813, 1.25, 400);
     &--address {
@@ -157,6 +160,7 @@
     }
 
     @include tablet {
+      margin: 0;
       &--category {
         width: 50%;
       }
@@ -173,6 +177,7 @@
       width: 33.33%;
     }
   }
+
   &__status {
     text-transform: uppercase;
     @include text-style(0.688, 1, 400);
@@ -185,6 +190,9 @@
     width: 4rem;
     @include tablet {
       width: 4rem;
+      &--warehouse-details {
+        width: 60%;
+      }
     }
 
     &--out {
@@ -192,6 +200,9 @@
       @include out-stock;
       @include tablet {
         width: 5.5rem;
+        &--warehouse-details {
+          width: 60%;
+        }
       }
     }
     &--tag-block {
@@ -202,6 +213,9 @@
   &__status-container {
     @include tablet {
       width: 33.33%;
+      &--warehouse-details {
+        width: 60%;
+      }
     }
   }
 
@@ -243,10 +257,15 @@
   }
 
   &__buttons {
+    margin: 0.7rem 0 0.2rem;
     @include flex-container(row, space-between, normal);
     @include tablet {
       @include flex-container(row, flex-end, normal);
       width: 16.67%;
+
+      &--warehouse-details {
+        width: 10%;
+      }
     }
   }
 
