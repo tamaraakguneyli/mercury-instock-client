@@ -1,0 +1,19 @@
+@use "../../styles/partials/variables" as *;
+
+.custom-select {
+  &__control {
+    border: $divider-line !important;
+    border-radius: $border-radius !important;
+
+    &:hover,
+    &:focus,
+    &:focus-visible {
+      border: $hover-border !important;
+    }
+  }
+}
+
+:export {
+  errorStateBorderColor: $out-stock-color;
+  regularBorderColor: $divider-line;
+}
