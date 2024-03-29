@@ -79,6 +79,18 @@
   &__form-select {
     border-radius: $border-radius;
   }
+
+  &__instock-label,
+  &__oostock-label {
+    color: $secondary-text-color;
+  }
+
+  &__instock-button:checked ~ label {
+    color: $primary-text-color;
+  }
+  &__oostock-button:checked ~ label {
+    color: $primary-text-color;
+  }
 }
 
 .buttons-block {

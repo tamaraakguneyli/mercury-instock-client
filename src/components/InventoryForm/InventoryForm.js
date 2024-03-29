@@ -13,6 +13,8 @@ import { useParams, useNavigate } from "react-router-dom";
 function InventoryForm({ action, apiData }) {
   const [warehouses, setWarehouses] = useState(null);
   const [categories, setCategories] = useState(null);
+  const [status, setStatus] = useState(apiData?.status);
+
   const nav = useNavigate();
 
   const methods = useForm();
@@ -94,6 +96,10 @@ function InventoryForm({ action, apiData }) {
     return warehouses.findIndex((warehouse) => {
       return warehouse.label === warehouseName;
     });
+  };
+
+  const handleStatusChange = (event) => {
+    setStatus(event.target.value);
   };
 
   return (
@@ -184,47 +190,69 @@ function InventoryForm({ action, apiData }) {
                             type="radio"
                             id="instock"
                             name="status"
-                            defaultValue="true"
-                            selected={apiData?.status === true || false}
+                            checked={status === "In Stock"}
+                            value="In Stock"
+                            onClick={handleStatusChange}
                             {...methods.register("status", {
                               required: true,
                             })}
+                            className="layout__instock-button"
                           />
-                          <label htmlFor="instock">In Stock</label>
+                          <label
+                            htmlFor="instock"
+                            className="layout__instock-label"
+                          >
+                            In Stock
+                          </label>
                         </div>
                         <div className="layout__form-radio-button">
                           <input
                             type="radio"
                             id="oostock"
                             name="status"
-                            defaultValue="false"
-                            selected={apiData?.status === false || false}
+                            checked={status === "Out of Stock"}
+                            value="Out of Stock"
+                            onClick={handleStatusChange}
                             {...methods.register("status", {
                               required: true,
                             })}
+                            className="layout__oostock-button"
                           />
-                          <label htmlFor="oostock">Out of Stock</label>
+                          <label
+                            htmlFor="oostock"
+                            className="layout__oostock-label"
+                          >
+                            Out of Stock
+                          </label>
                         </div>
                       </div>
-                      <label className="layout__form-labels">Quantity</label>
-                      <input
-                        type="text"
-                        name="quantity"
-                        className={
-                          methods.formState.errors.quantity?.type === "required"
-                            ? "layout__form-inputs layout__form-inputs--error"
-                            : "layout__form-inputs"
-                        }
-                        defaultValue={apiData?.quantity || ""}
-                        placeholder={
-                          methods.formState.errors.quantity?.type === "required"
-                            ? "0"
-                            : "Quantity"
-                        }
-                        {...methods.register("quantity", {
-                          required: true,
-                        })}
-                      />
+                      {status === "In Stock" && (
+                        <>
+                          <label className="layout__form-labels">
+                            Quantity
+                          </label>
+                          <input
+                            type="text"
+                            name="quantity"
+                            className={
+                              methods.formState.errors.quantity?.type ===
+                              "required"
+                                ? "layout__form-inputs layout__form-inputs--error"
+                                : "layout__form-inputs"
+                            }
+                            defaultValue={apiData?.quantity || ""}
+                            placeholder={
+                              methods.formState.errors.quantity?.type ===
+                              "required"
+                                ? "0"
+                                : "Quantity"
+                            }
+                            {...methods.register("quantity", {
+                              required: true,
+                            })}
+                          />
+                        </>
+                      )}
                       <label className="layout__form-labels">Warehouse</label>
                       <SelectBox
                         name="warehouse_id"

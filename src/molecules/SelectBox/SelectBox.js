@@ -33,7 +33,8 @@ function SelectBox({ options, name, selectedOption }) {
               control: (baseStyles, state) => ({
                 ...baseStyles,
                 borderColor: `${
-                  methods.formState.errors[name]?.type === "required"
+                  methods.formState.errors[name]?.type === "required" &&
+                  !currentSelectedOption
                     ? variables.errorStateBorderColor
                     : variables.regularBorderColor
                 } !important`,
