@@ -23,6 +23,7 @@ export default function WarehouseCard({ getWarehouses, item }) {
       console.log("error removing warehouse", error);
     }
   };
+
   return (
     <>
       <div className="list__main" key={item.id}>
@@ -64,7 +65,8 @@ export default function WarehouseCard({ getWarehouses, item }) {
         </div>
       </div>
       <DeleteModal
-        warehouseName={item.warehouse_name}
+        name={item.warehouse_name}
+        type="warehouse"
         handleOpenModal={handleOpenModal}
         handleDelete={handleDelete}
         modalIsOpen={modalIsOpen}

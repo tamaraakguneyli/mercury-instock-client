@@ -4,12 +4,19 @@ import "./DeleteModal.scss";
 import Delete from "../../assets/icons/close-24px.svg";
 
 export default function DeleteModal({
-  warehouseName,
   modalIsOpen,
   handleCloseModal,
   handleDelete,
   warehouseId,
+  type,
+  name,
 }) {
+  const title =
+    type === "warehouse" ? `${name} Warehouse?` : `${name} Inventory Item?`;
+  const text =
+    type === "warehouse"
+      ? `${name} from the list of warehouses`
+      : `${name} from the inventory`;
   return (
     <Modal
       isOpen={modalIsOpen}
@@ -28,11 +35,8 @@ export default function DeleteModal({
         />
       </div>
       <div className="modal__container">
-        <h3 className="modal__title">Delete {warehouseName} warehouse?</h3>
-        <p className="modal__text">
-          Please confirm that you’d like to delete {warehouseName} from the list
-          of warehouses. You won’t be able to undo this action.
-        </p>
+        <h3 className="modal__title">{`Delete ${title}`}</h3>
+        <p className="modal__text">{`Please confirm that you’d like to delete ${text}. You won’t be able to undo this action.`}</p>
         <div className="modal__wrap">
           <button className="modal__cancel" onClick={handleCloseModal}>
             cancel

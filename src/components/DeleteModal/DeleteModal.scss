@@ -11,19 +11,17 @@
   background-color: white;
   width: 100%;
   height: 100%;
-  padding-top: 5rem;
-  @include lr-padding(2, 2);
+  padding: 1rem;
+  cursor: pointer;
   @include tablet {
-    padding-top: 1rem;
-    top: 23%;
+    top: 20%;
     left: 5%;
     max-width: 88%;
-    height: 23rem;
+    height: 18rem;
     border: 1px solid black;
     @include desktop {
-      max-width: 60%;
+      width: 60%;
       left: 20%;
-      min-height: 25rem;
     }
   }
   &__icon {
@@ -35,12 +33,22 @@
 
   &__container {
     height: 100%;
+    @include tablet {
+      @include lr-padding(2, 2);
+    }
   }
   &__title {
-    font-size: 2.3rem;
+    font-size: 1.5rem;
+    @include tablet {
+      margin: 0;
+      font-size: 2rem;
+    }
   }
   &__text {
-    font-size: 1.3rem;
+    font-size: 0.85rem;
+    @include tablet {
+      font-size: 1.2rem;
+    }
   }
   &__cancel {
     @include secondary-button;
@@ -63,11 +71,10 @@
     }
   }
   &__wrap {
-    height: 20rem;
+    height: 28rem;
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    padding-right: 1rem;
     gap: 1rem;
     @include tablet {
       height: 5rem;
@@ -83,7 +90,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(35, 41, 64, 0.7);
 }
 .trigger {
   margin-top: 6rem;

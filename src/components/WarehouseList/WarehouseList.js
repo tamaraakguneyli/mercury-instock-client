@@ -2,7 +2,6 @@ import "./WarehouseList.scss";
 import WarehouseCard from "../WarehouseCard/WarehouseCard";
 
 function WarehouseList({ warehouses, getWarehouses }) {
-  const isLastComment = (index) => index === warehouses.length - 1;
   return (
     <>
       <div className="page page--margin">
@@ -27,7 +26,6 @@ function WarehouseList({ warehouses, getWarehouses }) {
           {warehouses.map((item, index) => (
             <WarehouseCard
               getWarehouses={getWarehouses}
-              isLastComment={isLastComment}
               item={item}
               index={index}
               key={item.id}
