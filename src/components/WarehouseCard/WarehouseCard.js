@@ -64,6 +64,7 @@ export default function WarehouseCard({ getWarehouses, item }) {
         </div>
       </div>
       <DeleteModal
+        warehouseName={item.warehouse_name}
         handleOpenModal={handleOpenModal}
         handleDelete={handleDelete}
         modalIsOpen={modalIsOpen}
