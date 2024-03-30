@@ -1,0 +1,13 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.custom-loader {
+  @include flex-container(column, center, center);
+  min-width: 100%;
+  padding: 5rem;
+}
+
+:export {
+  hourGlassColor1: $primary-interactive-color;
+  hourGlassColor2: $divider-line;
+}

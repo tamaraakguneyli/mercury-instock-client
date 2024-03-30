@@ -4,6 +4,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import apiConfig from "../apiConfig.json";
+import Loader from "../components/Loader/Loader";
 
 function EditWarehouse() {
   const { id: warehouseId } = useParams();
@@ -24,12 +25,12 @@ function EditWarehouse() {
   }, [warehouseId]);
 
   if (!warehouseDetails) {
-    return <p>Loading...</p>;
+    return <Loader />;
   }
   const headerConfig = {
     backButton: {
       show: true,
-      path: "/warehouses/:id",
+      path: `/warehouses/${warehouseId}`,
     },
     searchBar: false,
     actionButton: {

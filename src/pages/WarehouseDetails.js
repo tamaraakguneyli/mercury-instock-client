@@ -4,6 +4,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import apiConfig from "../apiConfig.json";
+import Loader from "../components/Loader/Loader";
 
 function WarehouseDetails() {
   const { id: warehouseId } = useParams();
@@ -38,7 +39,7 @@ function WarehouseDetails() {
   }, [warehouseId]);
 
   if (!warehouseContactDetails) {
-    return <p>Loading...</p>;
+    return <Loader />;
   }
 
   console.log(inventoryInWarehouse);

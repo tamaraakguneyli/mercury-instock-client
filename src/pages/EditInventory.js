@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import apiConfig from "../apiConfig.json";
+import Loader from "../components/Loader/Loader";
 
 function EditInventory() {
   const { inventoryId } = useParams();
@@ -25,7 +26,7 @@ function EditInventory() {
   }, [inventoryId]);
 
   if (!inventory) {
-    return <p>Loading...</p>;
+    return <Loader />;
   }
 
   const headerConfig = {
