@@ -1,8 +1,7 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import InventoryCard from "../InventoryCard/InventoryCard";
 
-function InventoryList({ inventories }) {
-  const isLastComment = (index) => index === inventories.length - 1;
+function InventoryList({ inventories, getInventories }) {
   return (
     <div className="page page--margin">
       <div className="list page__content">
@@ -16,57 +15,14 @@ function InventoryList({ inventories }) {
             actions
           </h4>
         </div>
+
         {inventories.map((item, index) => (
-          <div
-            className={`list__main list__main--row ${
-              isLastComment(index) ? "list__main--last" : ""
-            }`}
+          <InventoryCard
+            getInventories={getInventories}
+            item={item}
             key={item.id}
-          >
-            <div className="list__details list__details--row">
-              <div className="list__first">
-                <h4 className="list__title">inventory item</h4>
-                <Link
-                  to={`/inventory/${item.id}`}
-                  className="list__data list__link"
-                >
-                  {item.item_name}
-                  <div className="list__chevron"></div>
-                </Link>
-                <h4 className="list__title">category</h4>
-                <p className="list__data list__data--category list__category">
-                  {item.category}
-                </p>
-              </div>
-              <div className="list__second">
-                <h4 className="list__title">status</h4>
-                <div className="list__status-container">
-                  <p
-                    className={`list__data list__status ${
-                      item.status === "In Stock" ? "" : "list__status--out"
-                    }`}
-                  >
-                    {`${item.status}`}
-                  </p>
-                </div>
-                <h4 className="list__title">qty</h4>
-                <p className="list__data list__data--qty list__qty">
-                  {item.quantity}
-                </p>
-                <h4 className="list__title">warehouse</h4>
-                <p className="list__data list__data--warehouse list__warehouse">
-                  {item.warehouse_name}
-                </p>
-              </div>
-            </div>
-            <div className="list__buttons">
-              <button className="list__delete"></button>
-              <Link
-                to={`/inventory/${item.id}/edit`}
-                className="list__edit"
-              ></Link>
-            </div>
-          </div>
+            index={index}
+          />
         ))}
       </div>
     </div>

@@ -23,6 +23,8 @@ export default function WarehouseCard({ getWarehouses, item }) {
       console.log("error removing warehouse", error);
     }
   };
+  const title = `Delete ${item.warehouse_name} warehouse?`;
+  const text = `Please confirm that you’d like to delete the  ${item.warehouse_name}  from the list of warehouses. You won’t be able to undo this action.`;
   return (
     <>
       <div className="list__main" key={item.id}>
@@ -64,7 +66,8 @@ export default function WarehouseCard({ getWarehouses, item }) {
         </div>
       </div>
       <DeleteModal
-        warehouseName={item.warehouse_name}
+        title={title}
+        text={text}
         handleOpenModal={handleOpenModal}
         handleDelete={handleDelete}
         modalIsOpen={modalIsOpen}

@@ -43,7 +43,10 @@ function Inventory() {
   return (
     <>
       <PageHeader title="Inventory" config={headerConfig} />
-      <InventoryList inventories={inventories} />
+      <InventoryList
+        getInventories={getInventories}
+        inventories={inventories}
+      />
     </>
   );
 }
