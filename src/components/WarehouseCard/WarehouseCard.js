@@ -26,7 +26,7 @@ export default function WarehouseCard({ getWarehouses, item }) {
   return (
     <>
       <div className="list__main" key={item.id}>
-        <div className="list__details">
+        <div className="list__details list__details--warehouse">
           <div className="list__wrap list__wrap--name">
             <div className="list__right">
               <h4 className="list__title">Warehouse</h4>
@@ -35,6 +35,7 @@ export default function WarehouseCard({ getWarehouses, item }) {
                 className="list__data list__link"
               >
                 {item.warehouse_name}
+                <div className="list__chevron"></div>
               </Link>
             </div>
             <div className="list__left">
@@ -44,7 +45,9 @@ export default function WarehouseCard({ getWarehouses, item }) {
           </div>
           <div className="list__wrap list__wrap--info">
             <h4 className="list__title">Contact Name</h4>
-            <p className="list__data  ">{item.contact_name}</p>
+            <p className="list__data list__data--contact-name ">
+              {item.contact_name}
+            </p>
             <h4 className="list__title">Contact Information</h4>
             <div className="list__wrap list__wrap--contact">
               <p className="list__data ">{item.contact_phone}</p>
@@ -52,7 +55,7 @@ export default function WarehouseCard({ getWarehouses, item }) {
             </div>
           </div>
         </div>
-        <div className="list__wrap list__wrap--buttons">
+        <div className="list__buttons list__buttons--warehouse">
           <button onClick={handleOpenModal} className="list__delete"></button>
           <Link
             to={`/warehouses/${item.id}/edit`}
