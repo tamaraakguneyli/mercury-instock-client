@@ -19,7 +19,6 @@ export default function WarehouseCard({
   const warehouseId = item.id;
 
   const handleDelete = async () => {
-    console.log("handle delete working");
     try {
       await axios.delete(
         `${apiConfig.baseUrl}/warehouse/${warehouseId}${apiConfig.urlParam}`
