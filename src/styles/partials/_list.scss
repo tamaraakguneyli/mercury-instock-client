@@ -43,6 +43,11 @@
         display: flex;
         width: 80%;
       }
+
+      &--warehouse {
+        display: flex;
+        width: 80%;
+      }
     }
   }
 
@@ -54,6 +59,18 @@
       background-color: rgba($page-background-color, 0.7);
       padding: 0 2rem;
       @include width-height(100%, 2.5rem);
+    }
+  }
+
+  &__left {
+    @include tablet {
+      width: 50%;
+    }
+  }
+
+  &__right {
+    @include tablet {
+      width: 50%;
     }
   }
   &__first {
@@ -87,7 +104,6 @@
     @include tablet {
       display: flex;
       flex-direction: row;
-      justify-content: space-around;
       width: 45%;
     }
     &--contact {
@@ -98,19 +114,19 @@
     }
     &--name {
       @include tablet {
-        width: 40%;
+        width: 50%;
       }
     }
     &--buttons {
       width: 100%;
       display: flex;
-      justify-content: space-between;
+      justify-content: flex-end;
       @include tablet {
-        width: 10%;
+        width: 20%;
       }
     }
     &--info {
-      width: 55%;
+      width: 50%;
     }
   }
 
@@ -156,11 +172,19 @@
     color: $primary-text-color;
     @include text-style(0.813, 1.25, 400);
     &--address {
-      width: 7rem;
+      width: 8rem;
     }
 
     @include tablet {
       margin: 0;
+      &--address {
+        width: 90%;
+      }
+
+      &--contact-name {
+        width: 50%;
+      }
+
       &--category {
         width: 50%;
       }
@@ -262,6 +286,10 @@
     @include tablet {
       @include flex-container(row, flex-end, normal);
       width: 16.67%;
+
+      &--warehouse {
+        width: 20%;
+      }
 
       &--warehouse-details {
         width: 10%;
