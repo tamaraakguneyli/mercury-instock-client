@@ -4,12 +4,7 @@ import axios from "axios";
 import apiConfig from "../../apiConfig.json";
 import DeleteModal from "../DeleteModal/DeleteModal";
 
-export default function WarehouseCard({
-  getWarehouses,
-  isLastComment,
-  item,
-  index,
-}) {
+export default function WarehouseCard({ getWarehouses, item }) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const handleOpenModal = () => setModalIsOpen(true);
@@ -19,7 +14,6 @@ export default function WarehouseCard({
   const warehouseId = item.id;
 
   const handleDelete = async () => {
-    console.log("handle delete working");
     try {
       await axios.delete(
         `${apiConfig.baseUrl}/warehouse/${warehouseId}${apiConfig.urlParam}`
@@ -62,7 +56,7 @@ export default function WarehouseCard({
           </div>
         </div>
         <div className="list__buttons list__buttons--warehouse">
-          <button className="list__delete"></button>
+          <button onClick={handleOpenModal} className="list__delete"></button>
           <Link
             to={`/warehouses/${item.id}/edit`}
             className="list__edit"

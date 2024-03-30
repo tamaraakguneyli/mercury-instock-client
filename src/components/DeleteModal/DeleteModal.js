@@ -12,6 +12,7 @@ export default function DeleteModal({
   return (
     <Modal
       isOpen={modalIsOpen}
+      ariaHideApp={false}
       contentLabel="onRequestClose Example"
       onRequestClose={handleCloseModal}
       className="modal"
