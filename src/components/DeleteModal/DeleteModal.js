@@ -4,7 +4,7 @@ import "./DeleteModal.scss";
 import Delete from "../../assets/icons/close-24px.svg";
 
 export default function DeleteModal({
-  warehouse_name,
+  warehouseName,
   modalIsOpen,
   handleCloseModal,
   handleDelete,
@@ -28,7 +28,7 @@ export default function DeleteModal({
         />
       </div>
       <div className="modal__container">
-        <h3 className="modal__title">Delete {warehouse_name} warehouse?</h3>
+        <h3 className="modal__title">Delete {warehouseName} warehouse?</h3>
         <p className="modal__text">
           Please confirm that you’d like to delete the Washington from the list
           of warehouses. You won’t be able to undo this action.
