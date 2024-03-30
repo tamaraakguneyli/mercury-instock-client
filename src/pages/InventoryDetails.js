@@ -4,6 +4,7 @@ import PageHeader from "../components/PageHeader/PageHeader";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import apiConfig from "../apiConfig.json";
+import Loader from "../components/Loader/Loader";
 
 function InventoryDetails() {
   const { inventoryId } = useParams();
@@ -30,7 +31,7 @@ function InventoryDetails() {
   }, [inventoryId, navigate]);
 
   if (!inventoryData) {
-    return <p>Loading...</p>;
+    return <Loader />;
   }
 
   const headerConfig = {

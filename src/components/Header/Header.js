@@ -15,7 +15,7 @@ function Header() {
             <NavLink to={"/warehouses"} className="header__link">
               <p className="header__page">Warehouses</p>
             </NavLink>
-            <NavLink to={"/Inventory"} className="header__link">
+            <NavLink to={"/inventory"} className="header__link">
               <p className="header__page">Inventory</p>
             </NavLink>
           </div>

@@ -3,6 +3,7 @@ import WarehouseList from "../components/WarehouseList/WarehouseList";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import apiConfig from "../apiConfig.json";
+import Loader from "../components/Loader/Loader";
 
 function Warehouses() {
   const [warehouses, setWarehouses] = useState(null);
@@ -23,7 +24,7 @@ function Warehouses() {
   }, []);
 
   if (!warehouses) {
-    return <p>Loading...</p>;
+    return <Loader />;
   }
 
   const headerConfig = {

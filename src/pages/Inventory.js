@@ -3,6 +3,7 @@ import PageHeader from "../components/PageHeader/PageHeader";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import apiConfig from "../apiConfig.json";
+import Loader from "../components/Loader/Loader";
 
 function Inventory() {
   const [inventories, setinventories] = useState(null);
@@ -23,7 +24,7 @@ function Inventory() {
   }, []);
 
   if (!inventories) {
-    return <p>Loading...</p>;
+    return <Loader />;
   }
   const headerConfig = {
     backButton: {
