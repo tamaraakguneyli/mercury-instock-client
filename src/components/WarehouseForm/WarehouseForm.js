@@ -49,6 +49,10 @@ function WarehouseForm({ action, apiData }) {
     nav("/warehouses");
   };
 
+  const handleResetClick = (e) => {
+    nav("/warehouses");
+  };
+
   return (
     <main className="page">
       <article className="page__content">
@@ -88,6 +92,7 @@ function WarehouseForm({ action, apiData }) {
                       }
                       {...register("warehouse_name", {
                         required: true,
+                        min: 1,
                       })}
                       aria-invalid={errors.warehouse_name ? "true" : "false"}
                     />
@@ -110,6 +115,7 @@ function WarehouseForm({ action, apiData }) {
                       }
                       {...register("address", {
                         required: true,
+                        min: 10,
                       })}
                       aria-invalid={errors.address ? "true" : "false"}
                     />
@@ -130,6 +136,7 @@ function WarehouseForm({ action, apiData }) {
                       }
                       {...register("city", {
                         required: true,
+                        min: 1,
                       })}
                       aria-invalid={errors.city ? "true" : "false"}
                     />
@@ -150,6 +157,7 @@ function WarehouseForm({ action, apiData }) {
                       }
                       {...register("country", {
                         required: true,
+                        min: 1,
                       })}
                       aria-invalid={errors.country ? "true" : "false"}
                     />
@@ -175,6 +183,7 @@ function WarehouseForm({ action, apiData }) {
                       }
                       {...register("contact_name", {
                         required: true,
+                        min: 1,
                       })}
                       aria-invalid={errors.contact_name ? "true" : "false"}
                     />
@@ -195,12 +204,13 @@ function WarehouseForm({ action, apiData }) {
                       }
                       {...register("contact_position", {
                         required: true,
+                        min: 1,
                       })}
                       aria-invalid={errors.contact_name ? "true" : "false"}
                     />
                     <label className="layout__form-labels">Phone Number</label>
                     <input
-                      type="text"
+                      type="tel"
                       name="contact_phone"
                       className={
                         errors.contact_phone?.type === "required"
@@ -215,11 +225,12 @@ function WarehouseForm({ action, apiData }) {
                       }
                       {...register("contact_phone", {
                         required: true,
+                        pattern: /^((\+44)|(0)) ?\d{4} ?\d{6}$/i,
                       })}
                     />
                     <label className="layout__form-labels">Email</label>
                     <input
-                      type="text"
+                      type="email"
                       name="contact_email"
                       className={
                         errors.contact_email?.type === "required"
@@ -234,6 +245,7 @@ function WarehouseForm({ action, apiData }) {
                       }
                       {...register("contact_email", {
                         required: true,
+                        pattern: /^[\w-.]+@([\w-]+.)+[\w-]{2,4}$/g,
                       })}
                     />
                   </div>
@@ -242,6 +254,7 @@ function WarehouseForm({ action, apiData }) {
               <div className="buttons-block">
                 <button
                   type="reset"
+                  onClick={handleResetClick}
                   className="buttons-block__single-button buttons-block__single-button--cancel"
                 >
                   Cancel

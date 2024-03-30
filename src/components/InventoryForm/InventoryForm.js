@@ -121,6 +121,10 @@ function InventoryForm({ action, apiData }) {
     setAddStock(e.target.value === "In Stock" ? true : false);
   };
 
+  const handleResetClick = (e) => {
+    nav("/inventory");
+  };
+
   return (
     <main className="page">
       <article className="page__content">
@@ -161,6 +165,7 @@ function InventoryForm({ action, apiData }) {
                         }
                         {...methods.register("item_name", {
                           required: true,
+                          min: 1,
                         })}
                       />
                       <label className="layout__form-labels">Description</label>
@@ -169,8 +174,8 @@ function InventoryForm({ action, apiData }) {
                         className={
                           methods.formState.errors.description?.type ===
                           "required"
-                            ? "layout__form-inputs layout__form-inputs--error"
-                            : "layout__form-inputs"
+                            ? "layout__form-textarea layout__form-inputs--error"
+                            : "layout__form-textarea"
                         }
                         defaultValue={apiData?.description || ""}
                         placeholder={
@@ -181,6 +186,7 @@ function InventoryForm({ action, apiData }) {
                         }
                         {...methods.register("description", {
                           required: true,
+                          min: 5,
                         })}
                       ></textarea>
                       <label className="layout__form-labels">Category</label>
@@ -284,6 +290,7 @@ function InventoryForm({ action, apiData }) {
                 <div className="buttons-block">
                   <button
                     type="reset"
+                    onClick={handleResetClick}
                     className="buttons-block__single-button buttons-block__single-button--cancel"
                   >
                     Cancel
