@@ -4,12 +4,7 @@ import axios from "axios";
 import apiConfig from "../../apiConfig.json";
 import DeleteModal from "../DeleteModal/DeleteModal";
 
-export default function WarehouseCard({
-  getWarehouses,
-  isLastComment,
-  item,
-  index,
-}) {
+export default function WarehouseCard({ getWarehouses, item }) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const handleOpenModal = () => setModalIsOpen(true);
