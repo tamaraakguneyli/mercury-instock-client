@@ -68,7 +68,7 @@ export default function WarehouseCard({
       </div>
       <DeleteModal
         handleOpenModal={handleOpenModal}
-        handleDelete={{ handleDelete }}
+        handleDelete={handleDelete}
         modalIsOpen={modalIsOpen}
         handleCloseModal={handleCloseModal}
       />
