@@ -21,15 +21,30 @@ function WarehouseForm({ action, apiData }) {
   const { id: warehouseId } = useParams();
 
   const onSubmit = async (data) => {
+    console.log(data);
     if (action === "add") {
-      // TODO axios POST call
+      try {
+        await axios.post(
+          `${apiConfig.baseUrl}/warehouse${apiConfig.urlParam}`,
+          data
+        );
+      } catch (error) {
+        console.log(
+          "There was an error adding the new warehouse record:",
+          error
+        );
+      }
     }
 
     if (action === "edit") {
-      await axios.put(
-        `${apiConfig.baseUrl}/warehouse/${warehouseId}${apiConfig.urlParam}`,
-        data
-      );
+      try {
+        await axios.put(
+          `${apiConfig.baseUrl}/warehouse/${warehouseId}${apiConfig.urlParam}`,
+          data
+        );
+      } catch (error) {
+        console.log("There was an error editing the warehouse record:", error);
+      }
     }
     nav("/warehouses");
   };
