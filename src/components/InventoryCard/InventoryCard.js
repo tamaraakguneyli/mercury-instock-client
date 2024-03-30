@@ -4,21 +4,13 @@ import axios from "axios";
 import apiConfig from "../../apiConfig.json";
 import DeleteModal from "../DeleteModal/DeleteModal";
 
-export default function InventoryCard({
-  getInventories,
-  item,
-  lastRecord,
-  index,
-}) {
+export default function InventoryCard({ getInventories, item }) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const handleOpenModal = () => setModalIsOpen(true);
 
   const handleCloseModal = () => setModalIsOpen(false);
 
-  const title = `Delete ${item.item_name} inventory Item?`;
-  const text = `Please confirm that you’d like to delete ${item.item_name} from the inventory list.
-  You won’t be able to undo this action.`;
   const InventoryId = item.id;
 
   const handleDelete = async () => {
@@ -77,8 +69,8 @@ export default function InventoryCard({
       </div>
 
       <DeleteModal
-        title={title}
-        text={text}
+        type="inventory"
+        name={item.item_name}
         handleOpenModal={handleOpenModal}
         handleDelete={handleDelete}
         modalIsOpen={modalIsOpen}
