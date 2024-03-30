@@ -1,24 +1,47 @@
 import React from "react";
 import Select from "react-select";
+import { useFormContext, Controller } from "react-hook-form";
+import "./SelectBox.scss";
+import variables from "./SelectBox.scss";
 
 function SelectBox({ options, name, selectedOption }) {
-  console.log(selectedOption);
+  const methods = useFormContext();
+
   return !name ? (
     <>
       <strong>SelectBox</strong>: Please provide a name prop for your select.
     </>
   ) : (
     <>
-      <Select
+      <Controller
         name={name}
-        defaultValue={selectedOption}
-        styles={{
-          control: (baseStyles, state) => ({
-            ...baseStyles,
-            borderRadius: "20px",
-          }),
-        }}
-        options={options}
+        control={methods.control}
+        render={({ field: { onChange, value } }) => (
+          <Select
+            className="custom-select__container"
+            classNamePrefix="custom-select"
+            components={{
+              IndicatorSeparator: () => null,
+            }}
+            styles={{
+              control: (baseStyles, state) => ({
+                ...baseStyles,
+                borderColor: `${
+                  methods.formState.errors[name]?.type === "required"
+                    ? variables.errorStateBorderColor
+                    : variables.regularBorderColor
+                } !important`,
+              }),
+            }}
+            options={options}
+            value={
+              selectedOption ||
+              options.find((changeValue) => changeValue.value === value)
+            }
+            onChange={(val) => onChange(val.value)}
+          />
+        )}
+        rules={{ required: true }}
       />
     </>
   );

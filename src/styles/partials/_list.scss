@@ -12,18 +12,16 @@
     border-bottom: none;
 
     @include tablet {
-      &--row {
-        display: flex;
-        width: 100%;
-        padding: 0 2rem;
-        border-top: none;
-      }
-      &--record {
-        display: flex;
-        width: 100%;
-        padding: 0 2rem;
-        border-top: none;
-      }
+      border-top: none;
+      display: flex;
+      padding: 0 2rem;
+      height: 3.75rem;
+      align-items: center;
+      border-bottom: $divider-line;
+    }
+
+    &--last {
+      border-bottom: none;
     }
   }
 
@@ -33,15 +31,17 @@
     align-items: flex-start;
     justify-content: space-between;
     width: 100%;
-    @include tablet {
-      justify-content: flex-start;
-    }
 
     @include tablet {
+      justify-content: flex-start;
       &--row {
         display: flex;
-        width: 100%;
-        padding: 0 2rem;
+        width: 83.33%;
+      }
+
+      &--record {
+        display: flex;
+        width: 80%;
       }
     }
   }
@@ -53,8 +53,32 @@
       align-items: center;
       background-color: rgba($page-background-color, 0.7);
       padding: 0 2rem;
-
       @include width-height(100%, 2.5rem);
+    }
+  }
+  &__first {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    @include tablet {
+      flex-direction: row;
+      width: 40%;
+      &--warehouse-details {
+        width: 44.45%;
+      }
+    }
+  }
+
+  &__second {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    @include tablet {
+      flex-direction: row;
+      width: 60%;
+      &--warehouse-details {
+        width: 55.55%;
+      }
     }
   }
 
@@ -128,13 +152,29 @@
   }
 
   &__data {
-    margin: 0;
-    margin-bottom: 0.7rem;
+    margin: 0 0 0.4rem;
     color: $primary-text-color;
     @include text-style(0.813, 1.25, 400);
-
     &--address {
       width: 7rem;
+    }
+
+    @include tablet {
+      margin: 0;
+      &--category {
+        width: 50%;
+      }
+
+      &--qty,
+      &--warehouse {
+        width: 33.33%;
+      }
+    }
+  }
+
+  &__status-container {
+    @include tablet {
+      width: 33.33%;
     }
   }
 
@@ -150,6 +190,9 @@
     width: 4rem;
     @include tablet {
       width: 4rem;
+      &--warehouse-details {
+        width: 60%;
+      }
     }
 
     &--out {
@@ -157,6 +200,9 @@
       @include out-stock;
       @include tablet {
         width: 5.5rem;
+        &--warehouse-details {
+          width: 60%;
+        }
       }
     }
     &--tag-block {
@@ -166,18 +212,21 @@
 
   &__status-container {
     @include tablet {
-      width: 16.67%;
+      width: 33.33%;
+      &--warehouse-details {
+        width: 60%;
+      }
     }
   }
 
   &__link {
-    padding-right: 1rem;
     text-decoration: none;
     color: $primary-interactive-color;
-    background-image: url("../../assets/icons/chevron_right-24px.svg");
-    background-repeat: no-repeat;
-    background-position: 3.5rem -0.1rem;
     font-weight: 600;
+    display: flex;
+    flex-direction: row;
+    width: auto;
+    margin-right: auto;
   }
 
   &__delete {
@@ -205,6 +254,26 @@
     @include flex-container(row, center, normal);
     color: $out-stock-color;
     text-transform: uppercase;
+  }
+
+  &__buttons {
+    margin: 0.7rem 0 0.2rem;
+    @include flex-container(row, space-between, normal);
+    @include tablet {
+      @include flex-container(row, flex-end, normal);
+      width: 16.67%;
+
+      &--warehouse-details {
+        width: 10%;
+      }
+    }
+  }
+
+  &__chevron {
+    @include width-height(1.5rem, 1.5rem);
+    background-image: url("../../assets/icons/chevron_right-24px.svg");
+    background-repeat: no-repeat;
+    background-position: 0 -0.1rem;
   }
 }
 
