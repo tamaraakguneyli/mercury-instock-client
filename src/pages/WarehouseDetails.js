@@ -11,29 +11,28 @@ function WarehouseDetails() {
   const [warehouseContactDetails, setWarehouseContactDetails] = useState(null);
   const [inventoryInWarehouse, setInventoryInWarehouse] = useState(null);
 
+  const getInventoryInWarehouse = async () => {
+    try {
+      const { data } = await axios.get(
+        `${apiConfig.baseUrl}/warehouse/${warehouseId}/inventory${apiConfig.urlParam}`
+      );
+      setInventoryInWarehouse(data);
+    } catch (error) {
+      console.log("Error while fetching inventory:", error);
+    }
+  };
+  const getWarehouseContactDetails = async () => {
+    try {
+      const { data } = await axios.get(
+        `${apiConfig.baseUrl}/warehouse/${warehouseId}${apiConfig.urlParam}`
+      );
+      setWarehouseContactDetails(data);
+    } catch (error) {
+      console.log("Error while fetching warehouse:", error);
+    }
+  };
+
   useEffect(() => {
-    const getWarehouseContactDetails = async () => {
-      try {
-        const { data } = await axios.get(
-          `${apiConfig.baseUrl}/warehouse/${warehouseId}${apiConfig.urlParam}`
-        );
-        setWarehouseContactDetails(data);
-      } catch (error) {
-        console.log("Error while fetching warehouse:", error);
-      }
-    };
-
-    const getInventoryInWarehouse = async () => {
-      try {
-        const { data } = await axios.get(
-          `${apiConfig.baseUrl}/warehouse/${warehouseId}/inventory${apiConfig.urlParam}`
-        );
-        setInventoryInWarehouse(data);
-      } catch (error) {
-        console.log("Error while fetching inventory:", error);
-      }
-    };
-
     getWarehouseContactDetails();
     getInventoryInWarehouse();
   }, [warehouseId]);
@@ -66,6 +65,7 @@ function WarehouseDetails() {
         config={headerConfig}
       />
       <WarehouseDetailsCard
+        getInventoryInWarehouse={getInventoryInWarehouse}
         warehouse={warehouseContactDetails}
         inventory={inventoryInWarehouse}
       />
