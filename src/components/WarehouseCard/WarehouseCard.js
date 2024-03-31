@@ -20,7 +20,7 @@ export default function WarehouseCard({ getWarehouses, item }) {
       );
       getWarehouses();
     } catch (error) {
-      console.log("error removing warehouse", error);
+      console.log("Errror while trying to remove the warehouse", error);
     }
   };
 

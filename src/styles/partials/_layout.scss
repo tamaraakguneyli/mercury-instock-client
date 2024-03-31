@@ -115,3 +115,10 @@
     }
   }
 }
+
+.validation-error {
+  color: $out-stock-color;
+  margin: 0 0 1rem 0;
+  padding-left: 1.7rem;
+  background: url("../../assets/icons/error-24px.svg") no-repeat;
+}
