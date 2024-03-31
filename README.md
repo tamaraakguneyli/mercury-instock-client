@@ -1,4 +1,4 @@
-# Team Mercury's InStock Back End API
+# Team Mercury's InStock Front End App
 
 ### Basic set-up
 
@@ -18,3 +18,7 @@ To help us build the app faster, we've used a couple of modules:
 
 - [react-hook-form](https://react-hook-form.com/) - Form validation library
 - [react-select](https://react-select.com/) - Custom select element styling
+
+### Back End API Repository
+
+[Team Mercury's Back End API](https://github.com/VladimirCascarade/mercury-instock-server)
