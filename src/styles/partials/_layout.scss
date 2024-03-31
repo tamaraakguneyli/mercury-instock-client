@@ -79,6 +79,14 @@
   &__form-select {
     border-radius: $border-radius;
   }
+
+  &__form-radio-button-label {
+    color: $secondary-text-color;
+  }
+
+  &__form-radio-button-option:checked ~ &__form-radio-button-label {
+    color: $primary-text-color;
+  }
 }
 
 .buttons-block {
