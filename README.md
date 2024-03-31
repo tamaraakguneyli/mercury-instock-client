@@ -1,4 +1,4 @@
-# Team Mercury's InStock Front End App
+# Team Mercury's InStock Front End Web App
 
 ### Basic set-up
 
