@@ -15,7 +15,7 @@ function WarehouseDetails() {
     const getInventoryInWarehouse = async () => {
       try {
         const { data } = await axios.get(
-          `${apiConfig.baseUrl}/warehouse/${warehouseId}/inventory${apiConfig.urlParam}`
+          `${apiConfig.baseUrl}/warehouses/${warehouseId}/inventory${apiConfig.urlParam}`
         );
         setInventoryInWarehouse(data);
       } catch (error) {

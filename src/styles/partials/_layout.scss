@@ -48,11 +48,7 @@
       }
     }
     &--error {
-      border-color: $out-stock-color;
-      &:focus,
-      &:focus-visible {
-        border-color: $out-stock-color;
-      }
+      @include form-input-error;
     }
   }
 
@@ -67,6 +63,9 @@
       height: 9rem;
       @include tb-padding(0.5, 1);
     }
+    &--error {
+      @include form-input-error;
+    }
   }
   &__form-radio-section {
     @include flex-container(row, flex-start, space-between);
@@ -79,6 +78,14 @@
   }
   &__form-select {
     border-radius: $border-radius;
+  }
+
+  &__form-radio-button-label {
+    color: $secondary-text-color;
+  }
+
+  &__form-radio-button-option:checked ~ &__form-radio-button-label {
+    color: $primary-text-color;
   }
 }
 
