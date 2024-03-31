@@ -11,18 +11,17 @@ export default function InventoryCard({ getInventories, item }) {
 
   const handleCloseModal = () => setModalIsOpen(false);
 
-  const InventoryId = item.id;
-
   const handleDelete = async () => {
     try {
       await axios.delete(
-        ` ${apiConfig.baseUrl}/inventories/${InventoryId}${apiConfig.urlParam}`
+        ` ${apiConfig.baseUrl}/inventories/${item.id}${apiConfig.urlParam}`
       );
       getInventories();
     } catch (error) {
       console.log("Error while trying to remove the inventory", error);
     }
   };
+
   return (
     <>
       <div className="list__main" key={item.id}>

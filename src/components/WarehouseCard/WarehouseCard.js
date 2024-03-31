@@ -11,12 +11,10 @@ export default function WarehouseCard({ getWarehouses, item }) {
 
   const handleCloseModal = () => setModalIsOpen(false);
 
-  const warehouseId = item.id;
-
   const handleDelete = async () => {
     try {
       await axios.delete(
-        `${apiConfig.baseUrl}/warehouses/${warehouseId}${apiConfig.urlParam}`
+        `${apiConfig.baseUrl}/warehouses/${item.id}${apiConfig.urlParam}`
       );
       getWarehouses();
     } catch (error) {
