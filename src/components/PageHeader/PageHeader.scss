@@ -9,6 +9,7 @@
   @include tablet {
     top: 6rem;
   }
+
   @include desktop {
     top: 7rem;
   }
@@ -24,6 +25,7 @@
     justify-content: space-between;
     align-items: center;
   }
+
   &__left {
     display: flex;
     flex-direction: row;
@@ -38,6 +40,7 @@
       font-size: 2.3rem;
     }
   }
+
   &__container {
     @include lr-padding(1, 1);
     border-top-right-radius: 4px;
@@ -45,15 +48,14 @@
     background-color: $primary-white-color;
     padding-bottom: 1rem;
     border-bottom: $divider-line;
+
     @include tablet {
       @include lr-padding(2, 2);
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
+      @include flex-container(row, space-between, center);
       padding-bottom: 0;
     }
   }
+
   &__wrapper {
     position: relative;
     display: flex;
@@ -66,6 +68,7 @@
       gap: 1.3rem;
     }
   }
+
   &__search {
     background-image: url("../../assets/icons/search-24px.svg");
     background-repeat: no-repeat;
@@ -85,6 +88,7 @@
       padding: 0;
     }
   }
+
   &__button {
     @include primary-button;
     text-transform: capitalize;
@@ -94,24 +98,29 @@
       width: 11rem;
     }
   }
+
   &__tag {
     display: flex;
     align-self: center;
     width: 100%;
     margin-top: 0.5rem;
     text-decoration: none;
+
     @include tablet {
       margin-top: 0;
       width: 11rem;
     }
+
     &--back {
       width: auto;
       margin-top: 0.5rem;
     }
+
     &--edit {
       width: auto;
     }
   }
+
   &__back {
     background-image: url("../../assets/icons/arrow_back-24px.svg");
     background-repeat: no-repeat;
@@ -121,6 +130,7 @@
     border: none;
     background-color: $primary-white-color;
   }
+
   &__edit {
     @include primary-button;
     border-radius: 50% 50%;
@@ -130,9 +140,11 @@
     height: 2rem;
     width: 2rem;
     background-position: 50%;
+
     @include tablet {
       display: none;
     }
+
     &--tablet {
       display: none;
       @include tablet {
@@ -141,7 +153,7 @@
         right: 0;
         top: -1rem;
         width: 5rem;
-        border-radius: 20px;
+        border-radius: $border-radius;
         background-position: 15% 50%;
         text-indent: 1rem;
       }

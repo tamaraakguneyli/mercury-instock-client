@@ -1,5 +1,6 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/variables" as *;
+
 .button {
   @include delete-button;
 }
@@ -13,17 +14,20 @@
   height: 100%;
   padding: 1rem;
   cursor: pointer;
+  border: 2px solid black;
   @include tablet {
+    border: none;
+    border-radius: 4px;
     top: 20%;
     left: 5%;
     max-width: 88%;
     height: 18rem;
-    border: 1px solid black;
     @include desktop {
       width: 60%;
       left: 20%;
     }
   }
+
   &__icon {
     width: 100%;
     display: flex;
@@ -33,10 +37,14 @@
 
   &__container {
     height: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
     @include tablet {
       @include lr-padding(2, 2);
     }
   }
+
   &__title {
     font-size: 1.5rem;
     @include tablet {
@@ -44,38 +52,39 @@
       font-size: 2rem;
     }
   }
+
   &__text {
     font-size: 0.85rem;
     @include tablet {
       font-size: 1.2rem;
     }
   }
+
   &__cancel {
     @include secondary-button;
     text-transform: capitalize;
-    width: 100%;
     @include tablet {
       height: 2.7rem;
       width: 6rem;
       font-size: 1.1rem;
     }
   }
+
   &__delete {
     @include delete-button;
     text-transform: capitalize;
-    width: 100%;
     @include tablet {
       height: 2.7rem;
       font-size: 1.1rem;
       width: 6rem;
     }
   }
-  &__wrap {
-    height: 28rem;
+
+  &__btn {
+    flex-direction: row;
     display: flex;
-    justify-content: center;
-    align-items: flex-end;
     gap: 1rem;
+    padding-bottom: 3rem;
     @include tablet {
       height: 5rem;
       justify-content: flex-end;
@@ -92,6 +101,7 @@
   bottom: 0;
   background-color: rgba(35, 41, 64, 0.7);
 }
+
 .trigger {
   margin-top: 6rem;
 }
