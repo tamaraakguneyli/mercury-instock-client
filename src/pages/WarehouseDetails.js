@@ -42,7 +42,6 @@ function WarehouseDetails() {
     return <Loader />;
   }
 
-  console.log(inventoryInWarehouse);
   const headerConfig = {
     backButton: {
       show: true,

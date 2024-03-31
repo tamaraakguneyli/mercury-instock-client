@@ -35,9 +35,11 @@ export default function DeleteModal({
         />
       </div>
       <div className="modal__container">
-        <h3 className="modal__title">{`Delete ${title}`}</h3>
-        <p className="modal__text">{`Please confirm that you’d like to delete ${text}. You won’t be able to undo this action.`}</p>
         <div className="modal__wrap">
+          <h3 className="modal__title">{`Delete ${title}`}</h3>
+          <p className="modal__text">{`Please confirm that you’d like to delete ${text}. You won’t be able to undo this action.`}</p>
+        </div>
+        <div className="modal__btn">
           <button className="modal__cancel" onClick={handleCloseModal}>
             cancel
           </button>

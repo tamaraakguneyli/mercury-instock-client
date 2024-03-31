@@ -69,7 +69,6 @@
 }
 
 @mixin custom-button {
-  border: none;
   border-radius: $border-radius;
   font-size: 0.9rem;
   width: 100%;
@@ -87,6 +86,7 @@
 @mixin primary-button {
   @include custom-button;
   background-color: $primary-interactive-color;
+  border: none;
   color: $primary-white-color;
 
   &:hover {
@@ -107,6 +107,7 @@
 }
 
 @mixin delete-button {
+  border: none;
   @include custom-button;
   background-color: $delete-color;
   color: $primary-white-color;

@@ -21,7 +21,6 @@ function WarehouseForm({ action, apiData }) {
   const { id: warehouseId } = useParams();
 
   const onSubmit = async (data) => {
-    console.log(data);
     if (action === "add") {
       try {
         await axios.post(
