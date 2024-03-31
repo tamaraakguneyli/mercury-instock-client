@@ -68,6 +68,7 @@ function WarehouseDetails() {
       <WarehouseDetailsCard
         warehouse={warehouseContactDetails}
         inventory={inventoryInWarehouse}
+        handleInventoryState={setInventoryInWarehouse}
       />
     </>
   );
