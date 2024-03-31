@@ -30,7 +30,7 @@ function InventoryForm({ action, apiData }) {
     if (action === "add") {
       try {
         await axios.post(
-          `${apiConfig.baseUrl}/inventory${apiConfig.urlParam}`,
+          `${apiConfig.baseUrl}/inventories${apiConfig.urlParam}`,
           data
         );
       } catch (error) {
@@ -45,7 +45,7 @@ function InventoryForm({ action, apiData }) {
       try {
         data.quantity = data.status !== "In Stock" ? 0 : data.quantity;
         await axios.put(
-          `${apiConfig.baseUrl}/inventory/${apiData.id}${apiConfig.urlParam}`,
+          `${apiConfig.baseUrl}/inventories/${apiData.id}${apiConfig.urlParam}`,
           data
         );
       } catch (error) {
@@ -60,7 +60,7 @@ function InventoryForm({ action, apiData }) {
     const getWarehouses = async () => {
       try {
         const { data } = await axios.get(
-          `${apiConfig.baseUrl}/warehouse${apiConfig.urlParam}`
+          `${apiConfig.baseUrl}/warehouses${apiConfig.urlParam}`
         );
         setWarehouses(
           data.map((warehouse) => {
@@ -79,7 +79,7 @@ function InventoryForm({ action, apiData }) {
       try {
         const uniqueCategories = [];
         const { data } = await axios.get(
-          `${apiConfig.baseUrl}/inventory${apiConfig.urlParam}`
+          `${apiConfig.baseUrl}/inventories${apiConfig.urlParam}`
         );
         data.forEach((entry) => {
           const catObj = { value: entry.category, label: entry.category };
@@ -174,7 +174,7 @@ function InventoryForm({ action, apiData }) {
                         className={
                           methods.formState.errors.description?.type ===
                           "required"
-                            ? "layout__form-textarea layout__form-inputs--error"
+                            ? "layout__form-textarea layout__form-textarea--error"
                             : "layout__form-textarea"
                         }
                         defaultValue={apiData?.description || ""}
@@ -216,6 +216,7 @@ function InventoryForm({ action, apiData }) {
                             id="instock"
                             name="status"
                             value={"In Stock"}
+                            className="layout__form-radio-button-option"
                             defaultChecked={
                               (apiData?.status &&
                                 apiData.status === "In Stock") ||
@@ -225,7 +226,12 @@ function InventoryForm({ action, apiData }) {
                               required: true,
                             })}
                           />
-                          <label htmlFor="instock">In Stock</label>
+                          <label
+                            htmlFor="instock"
+                            className="layout__form-radio-button-label"
+                          >
+                            In Stock
+                          </label>
                         </div>
                         <div className="layout__form-radio-button">
                           <input
@@ -233,6 +239,7 @@ function InventoryForm({ action, apiData }) {
                             id="oostock"
                             name="status"
                             value={"Out Of Stock"}
+                            className="layout__form-radio-button-option"
                             defaultChecked={
                               (apiData?.status &&
                                 apiData.status === "Out Of Stock") ||
@@ -242,7 +249,12 @@ function InventoryForm({ action, apiData }) {
                               required: true,
                             })}
                           />
-                          <label htmlFor="oostock">Out of Stock</label>
+                          <label
+                            htmlFor="oostock"
+                            className="layout__form-radio-button-label"
+                          >
+                            Out of Stock
+                          </label>
                         </div>
                       </div>
                       {addStock && (

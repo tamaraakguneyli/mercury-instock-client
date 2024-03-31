@@ -11,7 +11,7 @@ function Inventory() {
   const getInventories = async () => {
     try {
       const { data } = await axios.get(
-        `${apiConfig.baseUrl}/inventory${apiConfig.urlParam}`
+        `${apiConfig.baseUrl}/inventories${apiConfig.urlParam}`
       );
       setinventories(data);
     } catch (error) {

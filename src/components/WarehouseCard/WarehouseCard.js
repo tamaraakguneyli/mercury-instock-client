@@ -16,7 +16,7 @@ export default function WarehouseCard({ getWarehouses, item }) {
   const handleDelete = async () => {
     try {
       await axios.delete(
-        `${apiConfig.baseUrl}/warehouse/${warehouseId}${apiConfig.urlParam}`
+        `${apiConfig.baseUrl}/warehouses/${warehouseId}${apiConfig.urlParam}`
       );
       getWarehouses();
     } catch (error) {

@@ -14,7 +14,7 @@ function EditWarehouse() {
     const getWarehouseDetails = async () => {
       try {
         const { data } = await axios.get(
-          `${apiConfig.baseUrl}/warehouse/${warehouseId}${apiConfig.urlParam}`
+          `${apiConfig.baseUrl}/warehouses/${warehouseId}${apiConfig.urlParam}`
         );
         setWarehouseDetails(data);
       } catch (error) {

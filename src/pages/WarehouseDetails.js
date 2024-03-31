@@ -11,6 +11,7 @@ function WarehouseDetails() {
   const [warehouseContactDetails, setWarehouseContactDetails] = useState(null);
   const [inventoryInWarehouse, setInventoryInWarehouse] = useState(null);
 
+
   const getInventoryInWarehouse = async () => {
     try {
       const { data } = await axios.get(
@@ -31,6 +32,7 @@ function WarehouseDetails() {
       console.log("Error while fetching warehouse:", error);
     }
   };
+
 
   useEffect(() => {
     getWarehouseContactDetails();
