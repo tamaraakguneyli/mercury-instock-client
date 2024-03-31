@@ -15,7 +15,7 @@ function WarehouseDetails() {
     const getWarehouseContactDetails = async () => {
       try {
         const { data } = await axios.get(
-          `${apiConfig.baseUrl}/warehouse/${warehouseId}${apiConfig.urlParam}`
+          `${apiConfig.baseUrl}/warehouses/${warehouseId}${apiConfig.urlParam}`
         );
         setWarehouseContactDetails(data);
       } catch (error) {
@@ -26,7 +26,7 @@ function WarehouseDetails() {
     const getInventoryInWarehouse = async () => {
       try {
         const { data } = await axios.get(
-          `${apiConfig.baseUrl}/warehouse/${warehouseId}/inventory${apiConfig.urlParam}`
+          `${apiConfig.baseUrl}/warehouses/${warehouseId}/inventory${apiConfig.urlParam}`
         );
         setInventoryInWarehouse(data);
       } catch (error) {

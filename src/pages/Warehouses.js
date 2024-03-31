@@ -11,7 +11,7 @@ function Warehouses() {
   const getWarehouses = async () => {
     try {
       const { data } = await axios.get(
-        `${apiConfig.baseUrl}/warehouse${apiConfig.urlParam}`
+        `${apiConfig.baseUrl}/warehouses${apiConfig.urlParam}`
       );
       setWarehouses(data);
     } catch (error) {
