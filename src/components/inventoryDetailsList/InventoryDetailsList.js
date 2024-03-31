@@ -7,7 +7,7 @@ import apiConfig from "../../apiConfig.json";
 export default function InventoryDetailsList({
   item,
   lastRecord,
-  getInventoryInWarehouse,
+  setInventoryInWarehouse,
 }) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
@@ -22,7 +22,7 @@ export default function InventoryDetailsList({
       await axios.delete(
         ` ${apiConfig.baseUrl}/inventory/${InventoryId}${apiConfig.urlParam}`
       );
-      getInventoryInWarehouse();
+      setInventoryInWarehouse();
     } catch (error) {
       console.log("Error while trying to remove the inventory", error);
     }

@@ -4,7 +4,7 @@ import InventoryDetailsList from "../inventoryDetailsList/InventoryDetailsList";
 function WarehouseDetailsCard({
   warehouse,
   inventory,
-  getInventoryInWarehouse,
+  setInventoryInWarehouse,
 }) {
   const isLastRecord = (index) => index === inventory.length - 1;
   return (
@@ -17,7 +17,7 @@ function WarehouseDetailsCard({
           <>
             {inventory.map((item, index) => (
               <InventoryDetailsList
-                getInventoryInWarehouse={getInventoryInWarehouse}
+                setInventoryInWarehouse={setInventoryInWarehouse}
                 key={item.id}
                 lastRecord={isLastRecord(index)}
                 item={item}
