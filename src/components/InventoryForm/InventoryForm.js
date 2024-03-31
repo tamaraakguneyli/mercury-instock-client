@@ -27,6 +27,8 @@ function InventoryForm({ action, apiData }) {
   };
 
   const onSubmit = async (data) => {
+    data.quantity = data.status !== "In Stock" ? 0 : data.quantity;
+
     if (action === "add") {
       try {
         await axios.post(
@@ -43,7 +45,6 @@ function InventoryForm({ action, apiData }) {
 
     if (action === "edit") {
       try {
-        data.quantity = data.status !== "In Stock" ? 0 : data.quantity;
         await axios.put(
           `${apiConfig.baseUrl}/inventories/${apiData.id}${apiConfig.urlParam}`,
           data
