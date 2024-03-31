@@ -1,7 +1,31 @@
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+import apiConfig from "../../apiConfig.json";
+import DeleteModal from "../DeleteModal/DeleteModal";
 
 function WarehouseDetailsCard({ warehouse, inventory }) {
   const isLastComment = (index) => index === inventory.length - 1;
+
+  const nav = useNavigate();
+
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
+  const handleOpenModal = () => setModalIsOpen(true);
+
+  const handleCloseModal = () => setModalIsOpen(false);
+
+  const handleDelete = async (inventoryId) => {
+    try {
+      await axios.delete(
+        ` ${apiConfig.baseUrl}/inventories/${inventoryId}${apiConfig.urlParam}`
+      );
+      nav("/warehouses");
+    } catch (error) {
+      console.log("Error while trying to remove the inventory", error);
+    }
+  };
+
   return (
     <div className="page page--warehouse">
       <div className="list page__content">
@@ -84,12 +108,23 @@ function WarehouseDetailsCard({ warehouse, inventory }) {
                   </div>
                 </div>
                 <div className="list__buttons list__buttons--warehouse-details">
-                  <button className="list__delete"></button>
+                  <button
+                    onClick={handleOpenModal}
+                    className="list__delete"
+                  ></button>
                   <Link
                     to={`/inventory/${item.id}/edit`}
                     className="list__edit"
                   ></Link>
                 </div>
+                <DeleteModal
+                  type="inventory"
+                  name={item.item_name}
+                  handleOpenModal={handleOpenModal}
+                  handleDelete={() => handleDelete(item.id)}
+                  modalIsOpen={modalIsOpen}
+                  handleCloseModal={handleCloseModal}
+                />
               </div>
             ))}
           </>

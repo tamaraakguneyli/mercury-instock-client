@@ -7,7 +7,6 @@ export default function DeleteModal({
   modalIsOpen,
   handleCloseModal,
   handleDelete,
-  warehouseId,
   type,
   name,
 }) {
@@ -43,10 +42,7 @@ export default function DeleteModal({
           <button className="modal__cancel" onClick={handleCloseModal}>
             cancel
           </button>
-          <button
-            onClick={() => handleDelete(warehouseId)}
-            className="modal__delete"
-          >
+          <button onClick={handleDelete} className="modal__delete">
             delete
           </button>
         </div>
