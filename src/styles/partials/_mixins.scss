@@ -171,3 +171,11 @@
     width: 5rem;
   }
 }
+@mixin form-input-error {
+  border-color: $out-stock-color;
+  &:focus,
+  &:focus-visible {
+    border-color: $out-stock-color;
+  }
+  @content;
+}

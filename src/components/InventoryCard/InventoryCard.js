@@ -16,7 +16,7 @@ export default function InventoryCard({ getInventories, item }) {
   const handleDelete = async () => {
     try {
       await axios.delete(
-        ` ${apiConfig.baseUrl}/inventory/${InventoryId}${apiConfig.urlParam}`
+        ` ${apiConfig.baseUrl}/inventories/${InventoryId}${apiConfig.urlParam}`
       );
       getInventories();
     } catch (error) {

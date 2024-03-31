@@ -24,7 +24,7 @@ function WarehouseForm({ action, apiData }) {
     if (action === "add") {
       try {
         await axios.post(
-          `${apiConfig.baseUrl}/warehouse${apiConfig.urlParam}`,
+          `${apiConfig.baseUrl}/warehouses${apiConfig.urlParam}`,
           data
         );
       } catch (error) {
@@ -38,7 +38,7 @@ function WarehouseForm({ action, apiData }) {
     if (action === "edit") {
       try {
         await axios.put(
-          `${apiConfig.baseUrl}/warehouse/${warehouseId}${apiConfig.urlParam}`,
+          `${apiConfig.baseUrl}/warehouses/${warehouseId}${apiConfig.urlParam}`,
           data
         );
       } catch (error) {
