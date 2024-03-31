@@ -20,7 +20,7 @@ export default function InventoryCard({ getInventories, item }) {
       );
       getInventories();
     } catch (error) {
-      console.log("error removing Inventory", error);
+      console.log("Error while trying to remove the inventory", error);
     }
   };
   return (

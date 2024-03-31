@@ -21,7 +21,6 @@ function WarehouseForm({ action, apiData }) {
   const { id: warehouseId } = useParams();
 
   const onSubmit = async (data) => {
-    console.log(data);
     if (action === "add") {
       try {
         await axios.post(
@@ -80,7 +79,7 @@ function WarehouseForm({ action, apiData }) {
                       type="text"
                       name="warehouse_name"
                       className={
-                        errors.warehouse_name?.type === "required"
+                        errors?.warehouse_name?.type === "required"
                           ? "layout__form-inputs layout__form-inputs--error"
                           : "layout__form-inputs"
                       }
@@ -213,41 +212,59 @@ function WarehouseForm({ action, apiData }) {
                       type="tel"
                       name="contact_phone"
                       className={
-                        errors.contact_phone?.type === "required"
+                        errors?.contact_phone
                           ? "layout__form-inputs layout__form-inputs--error"
                           : "layout__form-inputs"
                       }
                       defaultValue={apiData?.contact_phone || ""}
                       placeholder={
-                        errors.contact_phone?.type === "required"
-                          ? "Please add a contact phone number"
-                          : "Contact Phone"
+                        errors.contact_phone?.message || "Contact Phone"
                       }
                       {...register("contact_phone", {
-                        required: true,
-                        pattern: /^((\+44)|(0)) ?\d{4} ?\d{6}$/i,
+                        required: {
+                          value: true,
+                          message: "Please add a contact phone number",
+                        },
+                        pattern: {
+                          value: /^((\+44)|(0)) ?\d{4} ?\d{6}$/i,
+                          message: "Please use a valid UK format",
+                        },
                       })}
                     />
+                    {errors.contact_phone?.type === "pattern" && (
+                      <p className="validation-error">
+                        {errors.contact_phone.message}
+                      </p>
+                    )}
                     <label className="layout__form-labels">Email</label>
                     <input
-                      type="email"
+                      type="text"
                       name="contact_email"
                       className={
-                        errors.contact_email?.type === "required"
+                        errors?.contact_email
                           ? "layout__form-inputs layout__form-inputs--error"
                           : "layout__form-inputs"
                       }
                       defaultValue={apiData?.contact_email || ""}
                       placeholder={
-                        errors.contact_email?.type === "required"
-                          ? "Please add a contact email address"
-                          : "Contact Email"
+                        errors.contact_email?.message || "Contact Email"
                       }
                       {...register("contact_email", {
-                        required: true,
-                        pattern: /^[\w-.]+@([\w-]+.)+[\w-]{2,4}$/g,
+                        required: {
+                          value: true,
+                          message: "Please add a contact email address",
+                        },
+                        pattern: {
+                          value: /^[\w-.]+@([\w-]+.)+[\w-]{2,4}$/g,
+                          message: "Please enter a valid e-mail address format",
+                        },
                       })}
                     />
+                    {errors.contact_email?.type === "pattern" && (
+                      <p className="validation-error">
+                        {errors.contact_email.message}
+                      </p>
+                    )}
                   </div>
                 </div>
               </div>

@@ -23,7 +23,7 @@ function Loader() {
       <PageHeader title="Loading..." config={headerConfig} />
       <main className="page">
         <article className="page__content">
-          <div class="custom-loader">
+          <div className="custom-loader">
             <Hourglass
               visible={true}
               height="80"
